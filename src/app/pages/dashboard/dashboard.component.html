@@ -1,0 +1,202 @@
+<div class="page">
+  @if (!profile()) {
+    <div class="card empty">
+      <h2>Welcome to NutriTrack 🥗</h2>
+      <p>Set up your profile to get a personalized calorie & macro plan.</p>
+      <a routerLink="/profile" class="btn-primary">Create My Profile</a>
+    </div>
+  } @else {
+    <header class="page-head">
+      <h1>Hi {{ profile()!.name || 'there' }} 👋</h1>
+      <p class="sub">Your plan for <strong>{{ goalLabel() }}</strong></p>
+    </header>
+
+    @if (targets(); as t) {
+      <!-- Calories hero -->
+      <div class="card hero">
+        <div class="hero-main">
+          <span class="big">{{ t.goalCalories }}</span>
+          <span class="unit">kcal / day target</span>
+        </div>
+        <div class="hero-meta">
+          <div><span class="lbl">BMR</span><span>{{ t.bmr }}</span></div>
+          <div><span class="lbl">Maintenance</span><span>{{ t.tdee }}</span></div>
+          <div><span class="lbl">Burned today</span><span>{{ todayBurn() }}</span></div>
+        </div>
+      </div>
+
+      <!-- Calorie progress bar -->
+      <div class="card cal-bar-card" [attr.data-state]="barState()">
+        <div class="cal-bar-head">
+          <span class="cal-bar-title">Calories Today</span>
+          <span class="cal-bar-note">{{ calorieNote() }}</span>
+        </div>
+        <div class="cal-track">
+          <div class="cal-fill" [style.width.%]="consumedPct()"></div>
+        </div>
+        <div class="cal-scale">
+          <span>{{ todayCalories() }} eaten</span>
+          <span>Target {{ t.goalCalories }} kcal</span>
+        </div>
+
+        <!-- Quick add intake -->
+        <div class="intake-add">
+          <input type="text" placeholder="Food / meal" [(ngModel)]="intakeLabel" name="intakeLabel" />
+          <input type="number" min="1" max="5000" placeholder="kcal"
+            [ngModel]="intakeCalories()" (ngModelChange)="intakeCalories.set($event)" name="intakeCals" />
+          <button type="button" class="btn-primary" (click)="addIntake()">Add</button>
+        </div>
+
+        @if (todayIntake().length > 0) {
+          <ul class="intake-list">
+            @for (i of todayIntake(); track i.id) {
+              <li>
+                <span class="intake-name">{{ i.label }}</span>
+                <span class="intake-cal">{{ i.calories }} kcal</span>
+                <button class="intake-del" (click)="removeIntake(i.id)" aria-label="Remove">✕</button>
+              </li>
+            }
+          </ul>
+        }
+      </div>
+
+      <!-- Sugar intake -->
+      <div class="card sugar-card" [class.over]="sugarOver()">
+        <div class="sugar-head">
+          <span class="sugar-title">🍬 Sugar Intake</span>
+          <span class="sugar-amount">{{ todaySugar() }} / {{ sugarLimit() }} g</span>
+        </div>
+        <div class="sugar-bar">
+          <div class="sugar-fill" [class.over]="sugarOver()" [style.width.%]="sugarPct()"></div>
+        </div>
+        @if (sugarOver()) {
+          <p class="sugar-note over">Over your daily sugar limit — try to cut back on sweets and sugary drinks.</p>
+        } @else {
+          <p class="sugar-note">{{ sugarLimit() - todaySugar() }} g of sugar left today.</p>
+        }
+        <div class="sugar-add">
+          <input type="number" min="1" max="500" placeholder="grams"
+            [ngModel]="sugarInput()" (ngModelChange)="sugarInput.set($event)" name="sugarInput" />
+          <button type="button" class="btn-primary" (click)="addSugar()">Add sugar</button>
+          @if (todaySugar() > 0) {
+            <button type="button" class="sugar-reset" (click)="resetSugar()">Reset</button>
+          }
+        </div>
+      </div>
+
+      <!-- Supplements -->
+      <div class="card supp-card">
+        <div class="supp-head">
+          <span class="supp-title">💊 Supplements</span>
+          <span class="supp-count">{{ todaySupplements().length }} logged today</span>
+        </div>
+
+        <div class="supp-form">
+          <select [ngModel]="suppType()" (ngModelChange)="suppType.set($event)" name="suppType" class="supp-select">
+            @for (opt of supplementOptions; track opt.value) {
+              <option [value]="opt.value">{{ opt.emoji }} {{ opt.label }}</option>
+            }
+          </select>
+          @if (isOtherSupplement()) {
+            <input type="text" placeholder="Supplement name"
+              [ngModel]="suppName()" (ngModelChange)="suppName.set($event)" name="suppName" class="supp-name-input" />
+          }
+          <input type="text" [placeholder]="suppDosePlaceholder()"
+            [ngModel]="suppDose()" (ngModelChange)="suppDose.set($event)" name="suppDose" class="supp-dose-input" />
+          <button type="button" class="btn-primary" (click)="addSupplement()">Log</button>
+        </div>
+
+        @if (todaySupplements().length > 0) {
+          <ul class="supp-list">
+            @for (s of todaySupplements(); track s.id) {
+              <li>
+                <span class="supp-emoji">{{ emojiFor(s.type) }}</span>
+                <span class="supp-name">{{ s.name }}</span>
+                @if (s.dose) {
+                  <span class="supp-dose">{{ s.dose }}</span>
+                }
+                <span class="supp-time">{{ s.time }}</span>
+                <button class="supp-del" (click)="removeSupplement(s.id)" aria-label="Remove">✕</button>
+              </li>
+            }
+          </ul>
+        } @else {
+          <p class="supp-empty">No supplements logged yet — track your protein, creatine and more.</p>
+        }
+      </div>
+
+      <!-- Macros -->
+      @if (isSubscribed()) {
+        <h3 class="section-title">Daily Macros</h3>
+        <div class="macro-grid">
+          <div class="card macro protein">
+            <span class="macro-val">{{ t.proteinG }}g</span>
+            <span class="macro-lbl">Protein</span>
+            <span class="macro-cal">{{ t.proteinG * 4 }} kcal</span>
+          </div>
+          <div class="card macro carbs">
+            <span class="macro-val">{{ t.carbsG }}g</span>
+            <span class="macro-lbl">Carbs</span>
+            <span class="macro-cal">{{ t.carbsG * 4 }} kcal</span>
+          </div>
+          <div class="card macro fat">
+            <span class="macro-val">{{ t.fatG }}g</span>
+            <span class="macro-lbl">Fat</span>
+            <span class="macro-cal">{{ t.fatG * 9 }} kcal</span>
+          </div>
+          <div class="card macro fiber">
+            <span class="macro-val">{{ t.fiberG }}g</span>
+            <span class="macro-lbl">Fiber</span>
+            <span class="macro-cal">goal</span>
+          </div>
+        </div>
+      } @else {
+        <a routerLink="/setup" class="card locked">
+          <span class="lock-icon">🔒</span>
+          <div>
+            <strong>Daily Macros</strong>
+            <span class="lock-sub">Protein, carbs, fat &amp; fiber targets — subscribe to unlock.</span>
+          </div>
+          <span class="lock-cta">Upgrade →</span>
+        </a>
+      }
+
+      <!-- Quick widgets -->
+      <div class="widget-grid">
+        <a routerLink="/water" class="card widget">
+          <h4>💧 Water</h4>
+          <div class="bar"><div class="bar-fill" [style.width.%]="waterPct()"></div></div>
+          <span class="widget-sub">{{ todayWater() }} / {{ t.waterGlasses }} glasses</span>
+        </a>
+
+        @if (isSubscribed()) {
+          <a routerLink="/workouts" class="card widget">
+            <h4>🏃 Workouts</h4>
+            <span class="widget-big">{{ todayBurn() }}</span>
+            <span class="widget-sub">kcal burned today</span>
+          </a>
+
+          @if (cycleInfo(); as c) {
+            <a routerLink="/health" class="card widget">
+              <h4>🌸 Cycle</h4>
+              <span class="widget-big">Day {{ c.dayOfCycle }}</span>
+              <span class="widget-sub">{{ c.phase }} · next in {{ c.daysUntilNext }}d</span>
+            </a>
+          }
+        } @else {
+          <a routerLink="/setup" class="card widget locked-widget">
+            <h4>🏃 Workouts</h4>
+            <span class="widget-big">🔒</span>
+            <span class="widget-sub">Subscribe to unlock</span>
+          </a>
+        }
+
+        <a routerLink="/recipes" class="card widget">
+          <h4>🍽️ Recipes</h4>
+          <span class="widget-big">{{ store.allRecipes().length }}</span>
+          <span class="widget-sub">ideas to explore</span>
+        </a>
+      </div>
+    }
+  }
+</div>

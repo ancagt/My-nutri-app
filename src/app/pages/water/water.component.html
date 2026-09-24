@@ -1,0 +1,69 @@
+<div class="page">
+  <header class="page-head">
+    <h1>Water 💧</h1>
+    <p class="sub">Stay hydrated — 1 glass = 250 ml.</p>
+  </header>
+
+  <div class="card hydro">
+    <div class="ring" [style.--pct]="pct()">
+      <div class="ring-inner">
+        <span class="count">{{ todayWater() }}</span>
+        <span class="goal">/ {{ goalGlasses() }} glasses</span>
+        <span class="ml">{{ ml() }} ml</span>
+      </div>
+    </div>
+
+    <div class="controls">
+      <button class="round" (click)="remove()" [disabled]="todayWater() === 0">−</button>
+      <button class="btn-primary add" (click)="add()">+ Add a glass</button>
+      <button class="round" (click)="add()">+</button>
+    </div>
+  </div>
+
+  <div class="glasses">
+    @for (i of glassesArray(); track i) {
+      <button class="glass" [class.filled]="i < todayWater()" (click)="setTo(i)"
+        aria-label="Set glasses">{{ i < todayWater() ? '💧' : '🥛' }}</button>
+    }
+  </div>
+
+  @if (pct() >= 100) {
+    <p class="done">🎉 Goal reached! Great hydration today.</p>
+  }
+
+  <div class="card reminder-card">
+    <h3>⏰ Water Reminder</h3>
+    <p class="muted small">Get a nudge to drink water at a set interval.</p>
+
+    <label class="toggle">
+      <input type="checkbox" [ngModel]="reminderEnabled()" (ngModelChange)="reminderEnabled.set($event)" name="remEnabled" />
+      <span>Remind me to drink water</span>
+    </label>
+
+    @if (reminderEnabled()) {
+      <div class="reminder-row">
+        <div class="field">
+          <label>Every</label>
+          <input type="number" min="1" max="240" [ngModel]="reminderInterval()"
+            (ngModelChange)="reminderInterval.set($event)" name="remInterval" />
+        </div>
+        <div class="field">
+          <label>Unit</label>
+          <select [ngModel]="reminderUnit()" (ngModelChange)="reminderUnit.set($event)" name="remUnit">
+            <option value="minutes">Minutes</option>
+            <option value="hours">Hours</option>
+          </select>
+        </div>
+      </div>
+    }
+
+    <button class="btn-primary" (click)="saveReminder()">Save Reminder</button>
+
+    @if (reminder().enabled) {
+      <p class="reminder-active">✅ Reminding you every {{ reminder().interval }} {{ reminder().unit }}.</p>
+    }
+    @if (permissionDenied()) {
+      <p class="muted small">Notifications are blocked by your browser — you'll get an in-app reminder instead.</p>
+    }
+  </div>
+</div>

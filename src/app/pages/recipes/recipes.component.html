@@ -1,0 +1,242 @@
+<div class="page">
+  <header class="page-head">
+    <h1>Recipes 🍽️</h1>
+    <p class="sub">Romanian classics, veggies, fruit & pastries — plus your own creations.</p>
+  </header>
+
+  @if (profile()) {
+    <div class="diet-banner">
+      <span>{{ dietEmoji(profile()!.foodPreference) }}</span>
+      <span>
+        Showing your <strong>{{ dietLabel(profile()!.foodPreference) }}</strong> recipe book.
+        @if (activeDiet() !== 'all') {
+          <button class="link-inline" (click)="activeDiet.set('all')">Show all diets</button>
+        } @else {
+          <button class="link-inline" (click)="activeDiet.set(profile()!.foodPreference)">Back to my diet</button>
+        }
+      </span>
+    </div>
+  }
+
+  @if (metabolicWarnings().length > 0) {
+    <div class="metabolic-banner">
+      <div class="mb-text">
+        <strong>⚠️ Tailored to your latest bloodwork</strong>
+        <ul>
+          @for (w of metabolicWarnings(); track w) { <li>{{ w }}</li> }
+        </ul>
+      </div>
+      @if (recommendedHealthFocus().length > 0) {
+        <button class="btn-primary mb-cta" (click)="applyRecommended()">Show recommended recipes</button>
+      }
+    </div>
+  }
+
+  <div class="toolbar">
+    <input class="search" type="text" placeholder="Search recipes…"
+      [ngModel]="search()" (ngModelChange)="search.set($event)" />
+    <button class="btn-primary" (click)="showCreator.set(true)">+ Create Recipe</button>
+  </div>
+
+  <div class="chips filter-chips">
+    @for (c of categories; track c.value) {
+      <button class="chip" [class.active]="activeFilter() === c.value"
+        (click)="activeFilter.set(c.value)">{{ c.label }}</button>
+    }
+  </div>
+
+  <div class="diet-bar">
+    <span class="diet-bar-label">Diet:</span>
+    <div class="chips">
+      @for (d of dietFilters; track d.value) {
+        <button class="chip diet-chip" [class.active]="activeDiet() === d.value"
+          (click)="activeDiet.set(d.value)">{{ d.emoji }} {{ d.label }}</button>
+      }
+    </div>
+  </div>
+
+  <div class="health-bar">
+    <span class="health-bar-label">For your health:</span>
+    <div class="chips">
+      @for (h of healthFilters; track h.value) {
+        <button class="chip health-chip" [class.active]="activeHealth() === h.value"
+          (click)="activeHealth.set(h.value)">{{ h.emoji }} {{ h.label }}</button>
+      }
+    </div>
+  </div>
+
+  <!-- Recipe list -->
+  <div class="recipe-grid">
+    @for (r of filtered(); track r.id) {
+      <div class="card recipe" [class.expanded]="expandedId() === r.id">
+        <div class="recipe-head" (click)="toggle(r.id)">
+          <div class="recipe-title">
+            <strong>{{ r.name }}</strong>
+            <span class="badges">
+              <span class="badge cuisine">{{ r.cuisine }}</span>
+              @if (r.custom) { <span class="badge mine">Mine</span> }
+            </span>
+          </div>
+          <span class="chevron">{{ expandedId() === r.id ? '▾' : '▸' }}</span>
+        </div>
+
+        <p class="desc">{{ r.description }}</p>
+
+        @if (r.diets.length) {
+          <div class="diet-tags">
+            @for (d of r.diets; track d) {
+              <span class="diet-tag">{{ dietEmoji(d) }} {{ dietLabel(d) }}</span>
+            }
+          </div>
+        }
+
+        @if (r.healthFocus.length) {
+          <div class="health-tags">
+            @for (hf of r.healthFocus; track hf) {
+              <span class="health-tag">{{ healthEmoji(hf) }} {{ healthLabel(hf) }}</span>
+            }
+          </div>
+        }
+
+        @if (totals(r); as t) {
+          <div class="macros-mini">
+            <span>{{ t.calories }} kcal</span>
+            <span class="dot">•</span>
+            <span>P {{ t.proteinG }}g</span>
+            <span>C {{ t.carbsG }}g</span>
+            <span>F {{ t.fatG }}g</span>
+            <span>Fib {{ t.fiberG }}g</span>
+            <span class="per">/ serving</span>
+          </div>
+        }
+
+        @if (expandedId() === r.id) {
+          <div class="details">
+            <h4>Ingredients ({{ r.servings }} servings)</h4>
+            <ul>
+              @for (ing of r.ingredients; track ing.name) {
+                <li><span>{{ ing.name }}</span><span class="amt">{{ ing.amount }}</span></li>
+              }
+            </ul>
+            @if (r.steps.length) {
+              <h4>Steps</h4>
+              <ol>
+                @for (s of r.steps; track s) { <li>{{ s }}</li> }
+              </ol>
+            }
+            @if (r.custom) {
+              <button class="del-recipe" (click)="delete(r.id)">Delete recipe</button>
+            }
+          </div>
+        }
+      </div>
+    } @empty {
+      <p class="muted">No recipes match your filters. Try “Show all diets” or a different category.</p>
+    }
+  </div>
+</div>
+
+<!-- Custom recipe creator modal -->
+@if (showCreator()) {
+  <div class="modal-backdrop" (click)="cancelDraft()">
+    <div class="modal" (click)="$event.stopPropagation()">
+      <header class="modal-head">
+        <h2>Create Your Recipe</h2>
+        <button class="close" (click)="cancelDraft()">✕</button>
+      </header>
+
+      <div class="modal-body">
+        <div class="row">
+          <div class="field grow">
+            <label>Name</label>
+            <input type="text" [(ngModel)]="draft.name" placeholder="e.g. Mom's veggie stew" />
+          </div>
+          <div class="field">
+            <label>Servings</label>
+            <input type="number" min="1" max="20" [(ngModel)]="draft.servings" />
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="field">
+            <label>Category</label>
+            <select [(ngModel)]="draft.category">
+              @for (c of creatorCategories; track c) { <option [value]="c">{{ c }}</option> }
+            </select>
+          </div>
+          <div class="field grow">
+            <label>Cuisine</label>
+            <input type="text" [(ngModel)]="draft.cuisine" />
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Description</label>
+          <input type="text" [(ngModel)]="draft.description" placeholder="Short description" />
+        </div>
+
+        <div class="field">
+          <label>Health Focus (optional)</label>
+          <div class="chips">
+            @for (h of creatorHealthFocus; track h) {
+              <button type="button" class="chip health-chip"
+                [class.active]="draft.healthFocus.includes(h)"
+                (click)="toggleDraftHealth(h)">{{ healthEmoji(h) }} {{ healthLabel(h) }}</button>
+            }
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Suitable Diets (optional)</label>
+          <div class="chips">
+            @for (d of creatorDiets; track d) {
+              <button type="button" class="chip diet-chip"
+                [class.active]="draft.diets.includes(d)"
+                (click)="toggleDraftDiet(d)">{{ dietEmoji(d) }} {{ dietLabel(d) }}</button>
+            }
+          </div>
+        </div>
+
+        <h4>Ingredients</h4>
+        <p class="muted small">Add per-ingredient nutrition (for the whole recipe).</p>
+        @for (ing of draft.ingredients; track trackByIndex($index); let i = $index) {
+          <div class="ing-row">
+            <input class="ing-name" type="text" placeholder="Ingredient" [(ngModel)]="ing.name" />
+            <input class="ing-amt" type="text" placeholder="Amount" [(ngModel)]="ing.amount" />
+            <input class="ing-num" type="number" placeholder="kcal" [(ngModel)]="ing.calories" />
+            <input class="ing-num" type="number" placeholder="P" [(ngModel)]="ing.proteinG" />
+            <input class="ing-num" type="number" placeholder="C" [(ngModel)]="ing.carbsG" />
+            <input class="ing-num" type="number" placeholder="F" [(ngModel)]="ing.fatG" />
+            <input class="ing-num" type="number" placeholder="Fib" [(ngModel)]="ing.fiberG" />
+            <button class="mini-del" (click)="removeIngredient(i)"
+              [disabled]="draft.ingredients.length === 1">✕</button>
+          </div>
+        }
+        <button class="link-btn" (click)="addIngredient()">+ Add ingredient</button>
+
+        <h4>Steps</h4>
+        @for (step of draft.steps; track trackByIndex($index); let i = $index) {
+          <div class="step-row">
+            <span class="step-num">{{ i + 1 }}</span>
+            <input type="text" placeholder="Describe step" [(ngModel)]="draft.steps[i]" />
+            <button class="mini-del" (click)="removeStep(i)"
+              [disabled]="draft.steps.length === 1">✕</button>
+          </div>
+        }
+        <button class="link-btn" (click)="addStep()">+ Add step</button>
+
+        <div class="draft-totals">
+          <strong>Per serving:</strong>
+          {{ draftTotals().calories }} kcal · P {{ draftTotals().proteinG }}g ·
+          C {{ draftTotals().carbsG }}g · F {{ draftTotals().fatG }}g ·
+          Fib {{ draftTotals().fiberG }}g
+        </div>
+      </div>
+
+      <footer class="modal-foot">
+        <button class="btn-ghost" (click)="cancelDraft()">Cancel</button>
+        <button class="btn-primary" (click)="saveDraft()" [disabled]="!canSave()">Save Recipe</button>
+      </footer>
+    </div>
+  </div>
+}

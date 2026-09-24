@@ -1,0 +1,113 @@
+.hydro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.ring {
+  --size: 200px;
+  width: var(--size);
+  height: var(--size);
+  border-radius: 50%;
+  background: conic-gradient(#0ea5e9 calc(var(--pct) * 1%), var(--border) 0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.4s ease;
+
+  .ring-inner {
+    width: calc(var(--size) - 28px);
+    height: calc(var(--size) - 28px);
+    border-radius: 50%;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    .count { font-size: 3rem; font-weight: 800; color: #0ea5e9; line-height: 1; }
+    .goal { color: var(--muted); font-size: 0.9rem; }
+    .ml { font-size: 0.8rem; color: var(--muted); margin-top: 0.2rem; }
+  }
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+
+  .round {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    border: 2px solid var(--border);
+    background: #fff;
+    font-size: 1.4rem;
+    cursor: pointer;
+    &:disabled { opacity: 0.4; cursor: not-allowed; }
+  }
+  .add { white-space: nowrap; }
+}
+
+.glasses {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  justify-content: center;
+  margin-top: 1.2rem;
+
+  .glass {
+    font-size: 1.6rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    opacity: 0.5;
+    transition: opacity 0.15s ease, transform 0.15s ease;
+    &.filled { opacity: 1; }
+    &:hover { transform: scale(1.15); }
+  }
+}
+
+.done {
+  text-align: center;
+  font-weight: 700;
+  color: #0ea5e9;
+  margin-top: 1rem;
+}
+
+.reminder-card {
+  margin-top: 1.4rem;
+
+  h3 { margin: 0 0 0.2rem; }
+  .small { font-size: 0.8rem; }
+
+  .toggle {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0.7rem 0;
+    cursor: pointer;
+    input { width: 18px; height: 18px; }
+  }
+
+  .reminder-row {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 0.9rem;
+    .field { flex: 1; }
+    select {
+      width: 100%;
+      padding: 0.5rem 0.6rem;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: #fff;
+    }
+  }
+
+  .reminder-active {
+    margin: 0.8rem 0 0;
+    color: var(--brand-2);
+    font-weight: 600;
+    font-size: 0.88rem;
+  }
+}

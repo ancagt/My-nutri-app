@@ -1,0 +1,42 @@
+.small { font-size: 0.85rem; }
+
+.plan-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 0.6rem;
+  margin-top: 0.6rem;
+}
+
+.plan {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  text-align: left;
+  padding: 0.9rem;
+  border: 2px solid var(--border);
+  border-radius: 14px;
+  background: #fff;
+  cursor: pointer;
+  transition: all 0.12s ease;
+
+  &:hover { border-color: var(--brand); }
+  &.active {
+    border-color: var(--brand);
+    background: var(--brand-soft);
+  }
+
+  .plan-name { font-weight: 800; }
+  .plan-price { font-weight: 700; color: var(--brand-2); }
+  .plan-desc { font-size: 0.78rem; color: var(--muted); }
+}
+
+.tip {
+  margin: 0.9rem 0 0;
+  font-size: 0.85rem;
+  color: var(--brand-2);
+  background: var(--brand-soft);
+  border-radius: 10px;
+  padding: 0.6rem 0.7rem;
+}
+
+.btn-primary { margin-top: 0.9rem; }

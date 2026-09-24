@@ -1,0 +1,61 @@
+<div class="auth-wrap">
+  <div class="auth-card card">
+    <div class="auth-brand">
+      <span class="logo">🥗</span>
+      <span class="brand-name">NutriTrack</span>
+    </div>
+    <h1>Create your account</h1>
+    <p class="muted">Start tracking your nutrition in minutes.</p>
+
+    <form class="form" (ngSubmit)="submit()">
+      <div class="row">
+        <div class="field">
+          <label for="firstname">First name</label>
+          <input id="firstname" type="text" autocomplete="given-name" placeholder="Jane"
+            [ngModel]="firstname()" (ngModelChange)="firstname.set($event)" name="firstname" />
+        </div>
+        <div class="field">
+          <label for="name">Last name</label>
+          <input id="name" type="text" autocomplete="family-name" placeholder="Doe"
+            [ngModel]="name()" (ngModelChange)="name.set($event)" name="name" />
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="email">Email</label>
+        <input id="email" type="email" autocomplete="email" placeholder="jane@example.com"
+          [class.invalid]="emailTouched() && !emailValid()"
+          [ngModel]="email()" (ngModelChange)="email.set($event)" name="email" />
+        @if (emailTouched() && !emailValid()) {
+          <span class="field-hint">Enter a valid email, e.g. jane&#64;example.com</span>
+        }
+      </div>
+
+      <div class="field">
+        <label for="password">Password</label>
+        <input id="password" type="password" autocomplete="new-password" placeholder="••••••••"
+          [ngModel]="password()" (ngModelChange)="password.set($event)" name="password" />
+      </div>
+
+      <ul class="pw-rules">
+        <li [class.met]="hasLength()"><span class="tick">{{ hasLength() ? '✓' : '○' }}</span> At least 8 characters</li>
+        <li [class.met]="hasLower()"><span class="tick">{{ hasLower() ? '✓' : '○' }}</span> A lowercase letter (a–z)</li>
+        <li [class.met]="hasUpper()"><span class="tick">{{ hasUpper() ? '✓' : '○' }}</span> An uppercase letter (A–Z)</li>
+        <li [class.met]="hasNumber()"><span class="tick">{{ hasNumber() ? '✓' : '○' }}</span> A number (0–9)</li>
+        <li [class.met]="onlyAllowed()"><span class="tick">{{ onlyAllowed() ? '✓' : '○' }}</span> Only letters, numbers &amp; {{ '{' }} ! &#64; . - _ {{ '}' }}</li>
+      </ul>
+
+      @if (error()) {
+        <p class="auth-error">{{ error() }}</p>
+      }
+
+      <button type="submit" class="btn-primary" [disabled]="busy()">
+        {{ busy() ? 'Creating…' : 'Sign Up' }}
+      </button>
+    </form>
+
+    <p class="auth-switch">
+      Already have an account? <a routerLink="/login">Log in</a>
+    </p>
+  </div>
+</div>

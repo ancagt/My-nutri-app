@@ -1,0 +1,66 @@
+<div class="page">
+  <header class="page-head">
+    <h1>Food Log 🍴</h1>
+    <p class="sub">Log everything you eat today and watch your calories add up.</p>
+  </header>
+
+  @if (!profile()) {
+    <div class="card empty">
+      <h2>Set up your profile first</h2>
+      <p>We need your calorie target to track your daily progress.</p>
+      <a routerLink="/profile" class="btn-primary">Create My Profile</a>
+    </div>
+  } @else {
+    @if (targets(); as t) {
+      <!-- Calorie progress bar -->
+      <div class="card cal-bar-card" [attr.data-state]="barState()">
+        <div class="cal-bar-head">
+          <span class="cal-bar-title">Calories Today</span>
+          <span class="cal-bar-note">{{ calorieNote() }}</span>
+        </div>
+        <div class="cal-track">
+          <div class="cal-fill" [style.width.%]="consumedPct()"></div>
+        </div>
+        <div class="cal-scale">
+          <span>{{ todayCalories() }} eaten</span>
+          <span>Target {{ t.goalCalories }} kcal</span>
+        </div>
+      </div>
+    }
+
+    <!-- Add food form -->
+    <div class="card">
+      <h3>Add a food or meal</h3>
+      <div class="food-add">
+        <input type="text" placeholder="What did you eat?" [(ngModel)]="foodLabel" name="foodLabel"
+          (keyup.enter)="addFood()" />
+        <input type="number" min="1" max="5000" placeholder="kcal"
+          [ngModel]="foodCalories()" (ngModelChange)="foodCalories.set($event)" name="foodCals"
+          (keyup.enter)="addFood()" />
+        <button type="button" class="btn-primary" (click)="addFood()">Add</button>
+      </div>
+    </div>
+
+    <!-- Today's log -->
+    <div class="card">
+      <div class="log-head">
+        <h3>Today's meals</h3>
+        <span class="log-total">{{ todayCalories() }} kcal</span>
+      </div>
+
+      @if (todayIntake().length > 0) {
+        <ul class="food-list">
+          @for (i of todayIntake(); track i.id) {
+            <li>
+              <span class="food-name">{{ i.label }}</span>
+              <span class="food-cal">{{ i.calories }} kcal</span>
+              <button class="food-del" (click)="removeFood(i.id)" aria-label="Remove">✕</button>
+            </li>
+          }
+        </ul>
+      } @else {
+        <p class="muted small">Nothing logged yet — add your first meal above.</p>
+      }
+    </div>
+  }
+</div>

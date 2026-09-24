@@ -1,0 +1,245 @@
+.toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0.6rem 0;
+  cursor: pointer;
+  input { width: 18px; height: 18px; }
+}
+
+.cycle-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.4rem;
+  margin-top: 1rem;
+  padding: 1rem;
+  background: #fdf2f8;
+  border-radius: 12px;
+
+  div { display: flex; flex-direction: column; }
+  .lbl { font-size: 0.72rem; color: var(--muted); }
+  strong { font-size: 1.1rem; color: #db2777; }
+}
+
+.tip {
+  margin-top: 0.8rem;
+  padding: 0.7rem 0.9rem;
+  background: #fdf2f8;
+  border-left: 3px solid #db2777;
+  border-radius: 8px;
+  font-size: 0.85rem;
+}
+
+.small { font-size: 0.8rem; }
+.ok { color: var(--brand); font-weight: 600; margin-top: 0.5rem; }
+
+.phase-card {
+  border-top: 4px solid #db2777;
+
+  h3 { margin-bottom: 0.2rem; }
+
+  .phase-cols {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.2rem;
+    margin-top: 0.8rem;
+  }
+
+  .phase-col h4 {
+    margin: 0 0 0.5rem;
+    font-size: 0.92rem;
+  }
+
+  .chip.static {
+    cursor: default;
+    background: #fdf2f8;
+    border-color: #f9a8d4;
+    color: #be185d;
+  }
+
+  .advice-list {
+    margin: 0;
+    padding-left: 1.1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+
+    li { font-size: 0.85rem; line-height: 1.35; }
+  }
+}
+
+/* Subscription locked card */
+.locked {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  text-decoration: none;
+  color: inherit;
+  border-style: dashed;
+  transition: border-color 0.12s ease, background 0.12s ease;
+
+  &:hover { border-color: var(--brand); background: var(--brand-soft); }
+
+  .lock-icon { font-size: 1.6rem; }
+  strong { display: block; }
+  .lock-sub { font-size: 0.8rem; color: var(--muted); }
+  .lock-cta { margin-left: auto; font-weight: 700; color: var(--brand-2); white-space: nowrap; }
+}
+
+/* Glucose tracking */
+.glucose-card {
+  --c-low: #2563eb;
+  --c-ok: #16a34a;
+  --c-elevated: #f59e0b;
+  --c-high: #dc2626;
+
+  .glucose-add {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin: 0.6rem 0 0.9rem;
+    .field { flex: 1; min-width: 160px; }
+  }
+
+  .empty-note { margin-top: 1rem; }
+}
+
+.gauge-wrap {
+  margin-top: 1.2rem;
+  padding: 1rem;
+  border-radius: 14px;
+  background: #f8fafc;
+  border: 1px solid var(--border);
+
+  --status: var(--c-ok);
+  &[data-level='low'] { --status: var(--c-low); }
+  &[data-level='ok'] { --status: var(--c-ok); }
+  &[data-level='elevated'] { --status: var(--c-elevated); }
+  &[data-level='high'] { --status: var(--c-high); }
+
+  .gauge-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.7rem;
+  }
+  .gauge-val { font-size: 1.8rem; font-weight: 800; color: var(--status); }
+  .gauge-unit { font-size: 0.8rem; color: var(--muted); margin-left: 0.3rem; }
+  .gauge-status {
+    font-weight: 700;
+    color: #fff;
+    background: var(--status);
+    padding: 0.25rem 0.7rem;
+    border-radius: 999px;
+    font-size: 0.8rem;
+  }
+
+  .gauge-track {
+    position: relative;
+    height: 14px;
+    border-radius: 999px;
+    background: linear-gradient(
+      90deg,
+      var(--c-low) 0%,
+      var(--c-ok) 35%,
+      var(--c-elevated) 70%,
+      var(--c-high) 100%
+    );
+  }
+  .gauge-ok {
+    position: absolute;
+    top: -3px;
+    height: 20px;
+    border: 2px solid #0f172a33;
+    border-radius: 6px;
+    background: transparent;
+  }
+  .gauge-marker {
+    position: absolute;
+    top: -5px;
+    width: 4px;
+    height: 24px;
+    background: #0f172a;
+    border-radius: 2px;
+    transform: translateX(-50%);
+    box-shadow: 0 0 0 2px #fff;
+  }
+  .gauge-scale {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0.4rem;
+    font-size: 0.72rem;
+    color: var(--muted);
+  }
+}
+
+.glucose-hist-title {
+  margin: 1.2rem 0 0.5rem;
+  font-size: 0.92rem;
+}
+
+.glucose-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+
+  .glucose-item {
+    --dot: var(--c-ok, #16a34a);
+    &[data-level='low'] { --dot: #2563eb; }
+    &[data-level='ok'] { --dot: #16a34a; }
+    &[data-level='elevated'] { --dot: #f59e0b; }
+    &[data-level='high'] { --dot: #dc2626; }
+
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.55rem 0.7rem;
+    background: #f8fafc;
+    border-radius: 10px;
+
+    .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--dot); flex-shrink: 0; }
+    .meta { font-size: 0.78rem; color: var(--muted); }
+    .del {
+      margin-left: auto;
+      border: none;
+      background: none;
+      color: var(--muted);
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+    .del:hover { color: var(--c-high); }
+  }
+}
+
+/* Lipid gauge uses a graded green->amber->red scale */
+.gauge-track.lipid {
+  background: linear-gradient(90deg, #16a34a 0%, #16a34a 55%, #f59e0b 75%, #dc2626 100%);
+}
+
+.metabolic-warn {
+  margin-top: 1.2rem;
+  padding: 0.9rem 1rem;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 12px;
+
+  strong { color: #b91c1c; }
+  ul { margin: 0.5rem 0 0.6rem; padding-left: 1.1rem; display: flex; flex-direction: column; gap: 0.3rem; }
+  li { font-size: 0.85rem; line-height: 1.35; }
+  .warn-cta { font-weight: 700; color: var(--brand-2); text-decoration: none; font-size: 0.85rem; }
+}
+
+.bloodwork-card {
+  &.due { border-left: 4px solid #f59e0b; }
+
+  .bloodwork-msg {
+    margin: 0.8rem 0 0;
+    font-size: 0.88rem;
+    color: var(--brand-2);
+    font-weight: 600;
+    &.due { color: #b45309; }
+  }
+}

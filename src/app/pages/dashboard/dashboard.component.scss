@@ -1,0 +1,361 @@
+.empty {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 2.5rem 1.5rem;
+}
+
+.hero {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.2rem;
+  background: linear-gradient(135deg, var(--brand), var(--brand-2));
+  color: #fff;
+
+  .hero-main {
+    display: flex;
+    flex-direction: column;
+    .big { font-size: 3rem; font-weight: 800; line-height: 1; }
+    .unit { opacity: 0.85; font-size: 0.9rem; }
+  }
+
+  .hero-meta {
+    display: flex;
+    gap: 1.4rem;
+    div { display: flex; flex-direction: column; font-weight: 700; }
+    .lbl { font-size: 0.72rem; font-weight: 500; opacity: 0.85; }
+  }
+}
+
+.section-title {
+  margin: 1.6rem 0 0.6rem;
+  font-size: 1.05rem;
+}
+
+.locked {
+  margin-top: 1.6rem;
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  text-decoration: none;
+  color: inherit;
+  border-style: dashed;
+  transition: border-color 0.12s ease, background 0.12s ease;
+
+  &:hover { border-color: var(--brand); background: var(--brand-soft); }
+
+  .lock-icon { font-size: 1.6rem; }
+  strong { display: block; }
+  .lock-sub { font-size: 0.8rem; color: var(--muted); }
+  .lock-cta { margin-left: auto; font-weight: 700; color: var(--brand-2); white-space: nowrap; }
+}
+
+.locked-widget {
+  border-style: dashed;
+  .widget-big { opacity: 0.8; }
+}
+
+.cal-bar-card {
+  margin-top: 0.9rem;
+  --cal-color: var(--brand);
+
+  &[data-state='deficit'] { --cal-color: #10b981; }   /* green */
+  &[data-state='gain']    { --cal-color: #3b82f6; }   /* blue */
+  &[data-state='maintain']{ --cal-color: #f59e0b; }   /* amber */
+  &[data-state='too-low'],
+  &[data-state='too-high'],
+  &[data-state='over']    { --cal-color: #ef4444; }   /* red */
+
+  .cal-bar-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.6rem;
+    margin-bottom: 0.7rem;
+    flex-wrap: wrap;
+
+    .cal-bar-title { font-weight: 700; }
+    .cal-bar-note {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--cal-color);
+    }
+  }
+
+  .cal-track {
+    position: relative;
+    height: 16px;
+    background: var(--border);
+    border-radius: 999px;
+    overflow: hidden;
+
+    .cal-fill {
+      height: 100%;
+      border-radius: 999px;
+      background: var(--cal-color);
+      transition: width 0.35s ease, background 0.2s ease;
+    }
+
+    .cal-marker {
+      position: absolute;
+      top: -3px;
+      bottom: -3px;
+      width: 2px;
+      background: var(--text);
+      opacity: 0.55;
+      transform: translateX(-1px);
+    }
+  }
+
+  .cal-scale {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0.35rem;
+    font-size: 0.72rem;
+    color: var(--muted);
+
+    .cal-maint {
+      position: absolute;
+      transform: translateX(-50%);
+      white-space: nowrap;
+    }
+  }
+
+  .intake-add {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.9rem;
+
+    input[type='text'] { flex: 1; min-width: 0; }
+    input[type='number'] { width: 84px; }
+    input {
+      padding: 0.5rem 0.6rem;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      font: inherit;
+    }
+    .btn-primary { padding: 0.5rem 1rem; white-space: nowrap; }
+  }
+
+  .intake-list {
+    list-style: none;
+    margin: 0.7rem 0 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+
+    li {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.4rem 0.6rem;
+      background: var(--bg);
+      border-radius: 8px;
+      font-size: 0.85rem;
+    }
+    .intake-name { flex: 1; }
+    .intake-cal { font-weight: 700; color: var(--cal-color); }
+    .intake-del {
+      border: none; background: transparent; color: var(--muted);
+      cursor: pointer; font-size: 0.9rem; padding: 0.1rem 0.3rem;
+      &:hover { color: #ef4444; }
+    }
+  }
+}
+
+.macro-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 0.7rem;
+}
+
+.macro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.15rem;
+  padding: 1rem 0.6rem;
+  border-top: 4px solid var(--border);
+
+  .macro-val { font-size: 1.6rem; font-weight: 800; }
+  .macro-lbl { font-weight: 600; }
+  .macro-cal { font-size: 0.75rem; color: var(--muted); }
+
+  &.protein { border-top-color: #ef4444; }
+  &.carbs { border-top-color: #f59e0b; }
+  &.fat { border-top-color: #8b5cf6; }
+  &.fiber { border-top-color: #10b981; }
+}
+
+.widget-grid {
+  margin-top: 1.4rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 0.8rem;
+}
+
+.widget {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+
+  &:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
+
+  h4 { margin: 0; font-size: 0.95rem; }
+  .widget-big { font-size: 1.7rem; font-weight: 800; }
+  .widget-sub { font-size: 0.78rem; color: var(--muted); }
+}
+
+.bar {
+  height: 10px;
+  background: var(--border);
+  border-radius: 999px;
+  overflow: hidden;
+  .bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #38bdf8, #0ea5e9);
+    border-radius: 999px;
+    transition: width 0.3s ease;
+  }
+}
+
+/* Sugar intake */
+.sugar-card {
+  margin-top: 1.2rem;
+
+  &.over { border: 1px solid #fecaca; }
+
+  .sugar-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+  }
+  .sugar-title { font-weight: 700; }
+  .sugar-amount { font-weight: 700; color: var(--muted); }
+
+  .sugar-bar {
+    height: 12px;
+    border-radius: 999px;
+    background: var(--border);
+    overflow: hidden;
+  }
+  .sugar-fill {
+    height: 100%;
+    border-radius: 999px;
+    background: #ec4899;
+    transition: width 0.3s ease, background 0.3s ease;
+    &.over { background: #dc2626; }
+  }
+
+  .sugar-note {
+    margin: 0.5rem 0 0.8rem;
+    font-size: 0.82rem;
+    color: var(--muted);
+    &.over { color: #b91c1c; font-weight: 600; }
+  }
+
+  .sugar-add {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+
+    input {
+      flex: 1;
+      min-width: 0;
+      padding: 0.5rem 0.6rem;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+    }
+    .sugar-reset {
+      border: none;
+      background: none;
+      color: var(--muted);
+      cursor: pointer;
+      font-size: 0.82rem;
+      text-decoration: underline;
+    }
+  }
+}
+
+/* Supplements */
+.supp-card {
+  margin-top: 1.2rem;
+
+  .supp-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.7rem;
+  }
+  .supp-title { font-weight: 700; }
+  .supp-count { font-weight: 600; font-size: 0.82rem; color: var(--muted); }
+
+  .supp-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+
+    .supp-select,
+    input {
+      padding: 0.5rem 0.6rem;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      font: inherit;
+    }
+    .supp-select { flex: 1; min-width: 140px; }
+    .supp-name-input { flex: 1; min-width: 120px; }
+    .supp-dose-input { width: 120px; }
+    .btn-primary { padding: 0.5rem 1rem; white-space: nowrap; }
+  }
+
+  .supp-list {
+    list-style: none;
+    margin: 0.8rem 0 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+
+    li {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.45rem 0.65rem;
+      background: var(--bg);
+      border-radius: 8px;
+      font-size: 0.85rem;
+    }
+    .supp-emoji { font-size: 1.05rem; }
+    .supp-name { font-weight: 600; }
+    .supp-dose {
+      font-size: 0.75rem;
+      color: var(--brand-2);
+      background: var(--brand-soft);
+      padding: 0.1rem 0.45rem;
+      border-radius: 999px;
+    }
+    .supp-time { margin-left: auto; font-size: 0.72rem; color: var(--muted); }
+    .supp-del {
+      border: none; background: transparent; color: var(--muted);
+      cursor: pointer; font-size: 0.9rem; padding: 0.1rem 0.3rem;
+      &:hover { color: #ef4444; }
+    }
+  }
+
+  .supp-empty {
+    margin: 0.8rem 0 0;
+    font-size: 0.82rem;
+    color: var(--muted);
+  }
+}
+

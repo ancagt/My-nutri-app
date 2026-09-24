@@ -1,0 +1,35 @@
+<div class="auth-wrap">
+  <div class="auth-card card">
+    <div class="auth-brand">
+      <span class="logo">🥗</span>
+      <span class="brand-name">NutriTrack</span>
+    </div>
+    <h1>Welcome back</h1>
+    <p class="muted">Log in to track your nutrition and progress.</p>
+
+    <form class="form" (ngSubmit)="submit()">
+      <div class="field">
+        <label for="username">Username</label>
+        <input id="username" type="text" autocomplete="username" placeholder="your email"
+          [ngModel]="username()" (ngModelChange)="username.set($event)" name="username" />
+      </div>
+      <div class="field">
+        <label for="password">Password</label>
+        <input id="password" type="password" autocomplete="current-password" placeholder="••••••••"
+          [ngModel]="password()" (ngModelChange)="password.set($event)" name="password" />
+      </div>
+
+      @if (error()) {
+        <p class="auth-error">{{ error() }}</p>
+      }
+
+      <button type="submit" class="btn-primary" [disabled]="busy()">
+        {{ busy() ? 'Logging in…' : 'Log In' }}
+      </button>
+    </form>
+
+    <p class="auth-switch">
+      New here? <a routerLink="/signup">Create an account</a>
+    </p>
+  </div>
+</div>

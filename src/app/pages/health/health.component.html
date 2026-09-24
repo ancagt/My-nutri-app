@@ -1,0 +1,333 @@
+<div class="page">
+  <header class="page-head">
+    <h1>Health 🩺</h1>
+    <p class="sub">Your cycle and conditions help personalize fiber & nutrition advice.</p>
+  </header>
+
+  <!-- Menstrual cycle (subscription only) -->
+  @if (!isMale) {
+    @if (isSubscribed()) {
+    <div class="card">
+      <h3>🌸 Menstrual Cycle</h3>
+      <label class="toggle">
+        <input type="checkbox" [(ngModel)]="model.tracksCycle" name="track" />
+        <span>Track my cycle</span>
+      </label>
+
+      @if (model.tracksCycle) {
+        <div class="row">
+          <div class="field">
+            <label>Last period start</label>
+            <input type="date" [(ngModel)]="model.lastPeriodStart" name="last" />
+          </div>
+          <div class="field">
+            <label>Cycle length (days)</label>
+            <input type="number" min="20" max="40" [(ngModel)]="model.cycleLengthDays" name="cyclen" />
+          </div>
+          <div class="field">
+            <label>Period length (days)</label>
+            <input type="number" min="2" max="10" [(ngModel)]="model.periodLengthDays" name="perlen" />
+          </div>
+        </div>
+
+        @if (cycleInfo(); as c) {
+          <div class="cycle-info">
+            <div><span class="lbl">Cycle day</span><strong>{{ c.dayOfCycle }}</strong></div>
+            <div><span class="lbl">Phase</span><strong>{{ c.phase }}</strong></div>
+            <div><span class="lbl">Next period</span><strong>{{ c.nextDate }}</strong></div>
+            <div><span class="lbl">In</span><strong>{{ c.daysUntilNext }} days</strong></div>
+          </div>
+          @if (c.onPeriod) {
+            <p class="tip">On your period — iron-rich foods (spinach, beans, red meat) and gentle workouts can help.</p>
+          }
+        }
+      }
+    </div>
+    } @else {
+      <a routerLink="/setup" class="card locked">
+        <span class="lock-icon">🔒</span>
+        <div>
+          <strong>🌸 Menstrual Cycle</strong>
+          <span class="lock-sub">Cycle tracking & phase guides are a subscription feature.</span>
+        </div>
+        <span class="lock-cta">Upgrade →</span>
+      </a>
+    }
+  }
+
+  <!-- Phase-based guidance -->
+  @if (!isMale && isSubscribed() && model.tracksCycle && cycleInfo(); as c) {
+    @if (phaseGuide; as g) {
+      <div class="card phase-card">
+        <h3>{{ g.emoji }} {{ c.phase }} Phase Guide</h3>
+        <p class="muted small">{{ g.energy }}</p>
+
+        <div class="phase-cols">
+          <div class="phase-col">
+            <h4>🏋️ Exercise ideas</h4>
+            <div class="chips">
+              @for (ex of g.exercises; track ex) {
+                <span class="chip static">{{ ex }}</span>
+              }
+            </div>
+          </div>
+
+          <div class="phase-col">
+            <h4>🫧 Debloating advice</h4>
+            <ul class="advice-list">
+              @for (d of g.debloat; track d) {
+                <li>{{ d }}</li>
+              }
+            </ul>
+          </div>
+        </div>
+      </div>
+    }
+  }
+
+  <!-- Reproductive status -->
+  <div class="card">
+    <h3>🤰 Reproductive Status</h3>
+    <p class="muted small">This affects calorie, folate and nutrient needs.</p>
+    <div class="chips">
+      @for (r of visibleReproductiveStatus; track r.value) {
+        <button type="button" class="chip" [class.active]="model.reproductiveStatus === r.value"
+          (click)="model.reproductiveStatus = r.value">{{ r.emoji }} {{ r.label }}</button>
+      }
+    </div>
+    @if (model.reproductiveStatus === 'pregnant') {
+      <p class="tip">Aim for extra folate, iron and protein. Avoid raw/undercooked foods and limit caffeine.</p>
+    }
+    @if (model.reproductiveStatus === 'breastfeeding') {
+      <p class="tip">You need roughly +400–500 kcal/day and plenty of fluids while nursing.</p>
+    }
+    @if (model.reproductiveStatus === 'trying-to-conceive') {
+      <p class="tip">Folate-rich greens, legumes and whole grains support conception.</p>
+    }
+  </div>
+
+  <!-- Mental / brain health -->
+  <div class="card">
+    <h3>🧠 Mental & Brain Health</h3>
+    <p class="muted small">Mood and brain conditions can influence appetite and food choices.</p>
+    <div class="chips">
+      @for (m of mentalHealthList; track m.value) {
+        <button type="button" class="chip" [class.active]="hasMental(m.value)"
+          (click)="toggleMental(m.value)">{{ m.emoji }} {{ m.label }}</button>
+      }
+    </div>
+    @if (hasMental('depression') || hasMental('anxiety') || hasMental('grief') || hasMental('stress-burnout')) {
+      <p class="tip">Omega-3s, magnesium-rich foods and steady blood sugar can support mood. Be gentle with yourself.</p>
+    }
+  </div>
+
+  <!-- Conditions -->
+  <div class="card">
+    <h3>Conditions & Disorders</h3>
+    <p class="muted small">Select any that apply.</p>
+    <div class="chips">
+      @for (c of visibleConditions; track c.value) {
+        <button type="button" class="chip" [class.active]="hasCondition(c.value)"
+          (click)="toggleCondition(c.value)">{{ c.label }}</button>
+      }
+    </div>
+
+    <div class="field">
+      <label>Notes</label>
+      <textarea rows="3" [(ngModel)]="model.notes" name="notes"
+        placeholder="Allergies, medications, anything else…"></textarea>
+    </div>
+  </div>
+
+  <!-- Glucose tracking (subscription only) -->
+  @if (isSubscribed()) {
+    <div class="card glucose-card">
+      <h3>🩸 Blood Glucose</h3>
+      @if (hasGlucoseCondition()) {
+        <p class="muted small">Diabetic / insulin-resistant range applied — your healthy band is wider
+          ({{ glucoseRange().min }}–{{ glucoseRange().okMax }} mg/dL).</p>
+      } @else {
+        <p class="muted small">Standard healthy range: {{ glucoseRange().min }}–{{ glucoseRange().okMax }} mg/dL.</p>
+      }
+
+      <div class="glucose-add">
+        <div class="field">
+          <label>Reading (mg/dL)</label>
+          <input type="number" min="20" max="600" [ngModel]="glucoseInput()"
+            (ngModelChange)="glucoseInput.set($event)" name="glucoseval" />
+        </div>
+        <div class="field">
+          <label>When</label>
+          <div class="chips">
+            @for (ctx of glucoseContexts; track ctx.value) {
+              <button type="button" class="chip" [class.active]="glucoseContext() === ctx.value"
+                (click)="glucoseContext.set(ctx.value)">{{ ctx.label }}</button>
+            }
+          </div>
+        </div>
+      </div>
+      <button class="btn-primary" (click)="addGlucose()">+ Log Reading</button>
+
+      @if (latestGlucose(); as g) {
+        <div class="gauge-wrap" [attr.data-level]="glucoseStatus()">
+          <div class="gauge-head">
+            <div>
+              <span class="gauge-val">{{ g.mgdl }}</span>
+              <span class="gauge-unit">mg/dL</span>
+            </div>
+            <span class="gauge-status">{{ statusLabel() }}</span>
+          </div>
+          <div class="gauge-track">
+            <div class="gauge-ok" [style.left.%]="okBandStartPct()" [style.width.%]="okBandPct()"></div>
+            <div class="gauge-marker" [style.left.%]="gaugePct(g.mgdl)"></div>
+          </div>
+          <div class="gauge-scale">
+            <span>0</span>
+            <span>{{ glucoseRange().scaleMax }} mg/dL</span>
+          </div>
+        </div>
+      } @else {
+        <p class="muted small empty-note">No readings yet — log one to see your level.</p>
+      }
+
+      @if (glucose().length > 0) {
+        <h4 class="glucose-hist-title">Recent readings</h4>
+        <ul class="glucose-list">
+          @for (g of glucose(); track g.id) {
+            <li class="glucose-item" [attr.data-level]="levelOf(g.mgdl)">
+              <span class="dot"></span>
+              <strong>{{ g.mgdl }} mg/dL</strong>
+              <span class="meta">{{ g.context }} · {{ g.date }} {{ g.time }}</span>
+              <button class="del" (click)="removeGlucose(g.id)" aria-label="Delete">✕</button>
+            </li>
+          }
+        </ul>
+      }
+    </div>
+  } @else {
+    <a routerLink="/setup" class="card locked">
+      <span class="lock-icon">🔒</span>
+      <div>
+        <strong>🩸 Blood Glucose</strong>
+        <span class="lock-sub">Track your sugar levels with a colour-coded gauge — subscribe to unlock.</span>
+      </div>
+      <span class="lock-cta">Upgrade →</span>
+    </a>
+  }
+
+  <!-- Blood lipids: cholesterol + triglycerides (subscription only) -->
+  @if (isSubscribed()) {
+    <div class="card glucose-card">
+      <h3>🧪 Cholesterol & Triglycerides</h3>
+      <p class="muted small">Log your last blood panel (mg/dL). Healthy: cholesterol &lt; 200, triglycerides &lt; 150.</p>
+
+      <div class="glucose-add">
+        <div class="field">
+          <label>Total cholesterol (mg/dL)</label>
+          <input type="number" min="50" max="500" [ngModel]="cholesterolInput()"
+            (ngModelChange)="cholesterolInput.set($event)" name="cholval" />
+        </div>
+        <div class="field">
+          <label>Triglycerides (mg/dL)</label>
+          <input type="number" min="20" max="1000" [ngModel]="triglyceridesInput()"
+            (ngModelChange)="triglyceridesInput.set($event)" name="trigval" />
+        </div>
+      </div>
+      <button class="btn-primary" (click)="addLipid()">+ Log Panel</button>
+
+      @if (latestLipid(); as l) {
+        <div class="gauge-wrap" [attr.data-level]="cholesterolStatus()">
+          <div class="gauge-head">
+            <div>
+              <span class="gauge-val">{{ l.totalCholesterol }}</span>
+              <span class="gauge-unit">mg/dL cholesterol</span>
+            </div>
+            <span class="gauge-status">{{ lipidLabel(cholesterolStatus()) }}</span>
+          </div>
+          <div class="gauge-track lipid">
+            <div class="gauge-marker" [style.left.%]="lipidPct(l.totalCholesterol, cholesterolRange.scaleMax)"></div>
+          </div>
+          <div class="gauge-scale"><span>0</span><span>{{ cholesterolRange.scaleMax }} mg/dL</span></div>
+        </div>
+
+        <div class="gauge-wrap" [attr.data-level]="triglycerideStatus()">
+          <div class="gauge-head">
+            <div>
+              <span class="gauge-val">{{ l.triglycerides }}</span>
+              <span class="gauge-unit">mg/dL triglycerides</span>
+            </div>
+            <span class="gauge-status">{{ lipidLabel(triglycerideStatus()) }}</span>
+          </div>
+          <div class="gauge-track lipid">
+            <div class="gauge-marker" [style.left.%]="lipidPct(l.triglycerides, triglycerideRange.scaleMax)"></div>
+          </div>
+          <div class="gauge-scale"><span>0</span><span>{{ triglycerideRange.scaleMax }} mg/dL</span></div>
+        </div>
+      } @else {
+        <p class="muted small empty-note">No panel logged yet — add one to see your levels.</p>
+      }
+
+      @if (lipids().length > 0) {
+        <h4 class="glucose-hist-title">Recent panels</h4>
+        <ul class="glucose-list">
+          @for (l of lipids(); track l.id) {
+            <li class="glucose-item" [attr.data-level]="cholesterolLevelOf(l.totalCholesterol)">
+              <span class="dot"></span>
+              <strong>Chol {{ l.totalCholesterol }} · Trig {{ l.triglycerides }}</strong>
+              <span class="meta">{{ l.date }} {{ l.time }}</span>
+              <button class="del" (click)="removeLipid(l.id)" aria-label="Delete">✕</button>
+            </li>
+          }
+        </ul>
+      }
+
+      @if (metabolicWarnings().length > 0) {
+        <div class="metabolic-warn">
+          <strong>⚠️ Heads up</strong>
+          <ul>
+            @for (w of metabolicWarnings(); track w) { <li>{{ w }}</li> }
+          </ul>
+          <a routerLink="/recipes" class="warn-cta">See recommended recipes →</a>
+        </div>
+      }
+    </div>
+
+    <!-- Bloodwork follow-up reminder -->
+    <div class="card bloodwork-card" [class.due]="bloodworkDue()">
+      <h3>🗓️ Bloodwork Reminder</h3>
+      <p class="muted small">
+        Based on your latest results we suggest repeating bloodwork
+        <strong>{{ bloodworkIntervalLabel }}</strong>.
+      </p>
+
+      <div class="field">
+        <label>Date of last bloodwork</label>
+        <input type="date" [ngModel]="bloodworkDateInput()"
+          (ngModelChange)="bloodworkDateInput.set($event)" name="bwdate" />
+      </div>
+      <button class="btn-primary" (click)="saveBloodworkDate()">Save Date</button>
+
+      @if (bloodworkDate()) {
+        @if (bloodworkDue()) {
+          <p class="bloodwork-msg due">🔔 Your bloodwork is due — book a test soon.</p>
+        } @else {
+          <p class="bloodwork-msg">Next bloodwork due by <strong>{{ nextBloodworkDate() }}</strong>.</p>
+        }
+      } @else {
+        <p class="bloodwork-msg due">🔔 No bloodwork logged yet — add your last test date.</p>
+      }
+    </div>
+  } @else {
+    <a routerLink="/setup" class="card locked">
+      <span class="lock-icon">🔒</span>
+      <div>
+        <strong>🧪 Cholesterol, Triglycerides & Bloodwork</strong>
+        <span class="lock-sub">Track lipids and get bloodwork reminders — subscribe to unlock.</span>
+      </div>
+      <span class="lock-cta">Upgrade →</span>
+    </a>
+  }
+
+  <button class="btn-primary" (click)="save()">Save Health Data</button>
+  @if (saved()) { <p class="ok">Saved ✓</p> }
+</div>

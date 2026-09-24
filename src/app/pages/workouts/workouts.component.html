@@ -1,0 +1,107 @@
+<div class="page">
+  <header class="page-head">
+    <h1>Workouts 🏃</h1>
+    <p class="sub">Log activity — your calorie target adjusts automatically.</p>
+  </header>
+
+  @if (!profile()) {
+    <div class="card empty">Set up your profile first to estimate calories burned.</div>
+  } @else {
+    @if (isSubscribed()) {
+      <div class="card">
+        <label class="field-label">Activity</label>
+        <div class="chips">
+          @for (t of workoutTypes; track t.value) {
+            <button class="chip" [class.active]="selectedType() === t.value"
+              (click)="selectedType.set(t.value)">{{ t.emoji }} {{ t.label }}</button>
+          }
+        </div>
+
+        <div class="duration-row">
+          <div class="field">
+            <label>Duration (minutes)</label>
+            <input type="number" min="1" max="600" [ngModel]="duration()"
+              (ngModelChange)="duration.set($event)" />
+          </div>
+          <div class="preview">
+            <span class="preview-val">{{ previewCalories() }}</span>
+            <span class="preview-lbl">kcal burned</span>
+          </div>
+        </div>
+
+        <button class="btn-primary" (click)="add()">+ Add Workout</button>
+      </div>
+    } @else {
+      <a routerLink="/setup" class="card locked">
+        <span class="lock-icon">🔒</span>
+        <div>
+          <strong>Workout logging</strong>
+          <span class="lock-sub">Log activities and track calories burned — subscribe to unlock.</span>
+        </div>
+        <span class="lock-cta">Upgrade →</span>
+      </a>
+    }
+
+    <div class="card steps-card">
+      <label class="field-label">👣 Steps Today</label>
+      <div class="duration-row">
+        <div class="field">
+          <label>Step count</label>
+          <input type="number" min="0" max="100000" step="100" [ngModel]="stepsInput()"
+            (ngModelChange)="stepsInput.set($event)" />
+        </div>
+        <div class="preview">
+          <span class="preview-val">{{ stepsPreviewCalories() }}</span>
+          <span class="preview-lbl">kcal from steps</span>
+        </div>
+      </div>
+      <button class="btn-primary" (click)="saveSteps()">Save Steps</button>
+      @if (todaySteps() > 0) {
+        <p class="steps-saved">Logged {{ todaySteps() }} steps · {{ todayStepBurn() }} kcal today</p>
+      }
+
+      @if (stepGoal() > 0) {
+        <div class="step-goal">
+          <div class="step-goal-head">
+            <span>Daily goal: {{ stepGoal() }} steps</span>
+            <span [class.reached]="stepGoalReached()">{{ stepGoalPct() }}%</span>
+          </div>
+          <div class="step-track">
+            <div class="step-fill" [class.reached]="stepGoalReached()" [style.width.%]="stepGoalPct()"></div>
+          </div>
+          @if (stepGoalReached()) {
+            <p class="step-goal-msg">🎉 Step goal reached — great job!</p>
+          } @else {
+            <p class="step-goal-msg muted">{{ stepGoal() - todaySteps() }} steps to go</p>
+          }
+        </div>
+      }
+    </div>
+
+    @if (isSubscribed()) {
+      <div class="today-summary card">
+        <span>🔥 Burned today</span>
+        <strong>{{ todayBurn() }} kcal</strong>
+      </div>
+
+      <h3 class="section-title">History</h3>
+      @if (workouts().length === 0) {
+        <p class="muted">No workouts logged yet.</p>
+      } @else {
+        <ul class="list">
+          @for (w of workouts(); track w.id) {
+            <li class="card list-item">
+              <span class="emoji">{{ emojiFor(w.type) }}</span>
+              <div class="info">
+                <strong>{{ labelFor(w.type) }}</strong>
+                <span class="meta">{{ w.durationMin }} min · {{ w.date }}</span>
+              </div>
+              <span class="cal">{{ w.caloriesBurned }} kcal</span>
+              <button class="del" (click)="remove(w.id)" aria-label="Delete">✕</button>
+            </li>
+          }
+        </ul>
+      }
+    }
+  }
+</div>

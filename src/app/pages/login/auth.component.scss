@@ -1,0 +1,79 @@
+.auth-wrap {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  background: linear-gradient(135deg, var(--brand-soft), var(--bg));
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 420px;
+  padding: 2rem 1.8rem;
+
+  h1 { font-size: 1.5rem; margin-top: 0.4rem; }
+  > .muted { margin: 0 0 1.2rem; }
+}
+
+.auth-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.8rem;
+  .logo { font-size: 1.6rem; }
+  .brand-name { font-weight: 800; font-size: 1.2rem; color: var(--brand); }
+}
+
+.form { gap: 0.9rem; }
+
+input.invalid {
+  border-color: #ef4444;
+}
+
+.field-hint {
+  font-size: 0.75rem;
+  color: #b91c1c;
+  margin-top: 0.25rem;
+}
+
+.auth-error {
+  margin: 0;
+  color: #b91c1c;
+  background: #fee2e2;
+  border: 1px solid #fecaca;
+  border-radius: 10px;
+  padding: 0.55rem 0.7rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.auth-switch {
+  margin: 1.1rem 0 0;
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--muted);
+  a { color: var(--brand-2); font-weight: 700; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+}
+
+/* ---- Password strength rules (sign up) ---- */
+.pw-rules {
+  list-style: none;
+  margin: 0.2rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 0.25rem;
+  font-size: 0.8rem;
+
+  li {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: var(--muted);
+    &.met { color: var(--brand-2); font-weight: 600; }
+    .tick { width: 1rem; }
+  }
+}
+
+.btn-primary:disabled { opacity: 0.55; }

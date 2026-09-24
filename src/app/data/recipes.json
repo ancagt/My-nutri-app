@@ -1,0 +1,782 @@
+[
+  {
+    "id": "ro-sarmale",
+    "name": "Sarmale (Cabbage Rolls)",
+    "category": "main",
+    "cuisine": "Romanian",
+    "servings": 4,
+    "description": "Traditional sour cabbage leaves stuffed with minced meat and rice, slow-cooked.",
+    "custom": false,
+    "tags": ["traditional", "hearty", "winter"],
+    "healthFocus": ["iron-rich"],
+    "diets": ["omnivore"],
+    "ingredients": [
+      { "name": "Pickled cabbage leaves", "amount": "12 leaves", "calories": 60, "proteinG": 3, "carbsG": 12, "fatG": 0, "fiberG": 5 },
+      { "name": "Minced pork & beef", "amount": "400 g", "calories": 880, "proteinG": 72, "carbsG": 0, "fatG": 64, "fiberG": 0 },
+      { "name": "Rice", "amount": "100 g", "calories": 360, "proteinG": 7, "carbsG": 79, "fatG": 1, "fiberG": 1 },
+      { "name": "Onion", "amount": "1 large", "calories": 45, "proteinG": 1, "carbsG": 11, "fatG": 0, "fiberG": 2 },
+      { "name": "Tomato sauce", "amount": "200 ml", "calories": 60, "proteinG": 3, "carbsG": 13, "fatG": 0, "fiberG": 3 }
+    ],
+    "steps": [
+      "Saute chopped onion, mix with minced meat, rinsed rice, salt and pepper.",
+      "Wrap spoonfuls of filling in cabbage leaves.",
+      "Layer rolls in a pot with tomato sauce and a little water.",
+      "Simmer on low heat for 2-3 hours (or bake covered)."
+    ]
+  },
+  {
+    "id": "ro-ciorba-perisoare",
+    "name": "Ciorba de Perisoare (Meatball Sour Soup)",
+    "category": "soup",
+    "cuisine": "Romanian",
+    "servings": 6,
+    "description": "Sour vegetable soup with pork meatballs, soured with borsch.",
+    "custom": false,
+    "tags": ["soup", "sour", "comfort"],
+    "healthFocus": ["gut-friendly", "iron-rich"],
+    "diets": ["omnivore"],
+    "ingredients": [
+      { "name": "Minced pork", "amount": "300 g", "calories": 660, "proteinG": 54, "carbsG": 0, "fatG": 48, "fiberG": 0 },
+      { "name": "Rice", "amount": "50 g", "calories": 180, "proteinG": 3, "carbsG": 40, "fatG": 0, "fiberG": 1 },
+      { "name": "Carrot, celery, parsnip", "amount": "300 g", "calories": 120, "proteinG": 3, "carbsG": 27, "fatG": 0, "fiberG": 8 },
+      { "name": "Borsch (fermented bran)", "amount": "500 ml", "calories": 20, "proteinG": 1, "carbsG": 4, "fatG": 0, "fiberG": 1 },
+      { "name": "Lovage & parsley", "amount": "1 bunch", "calories": 10, "proteinG": 1, "carbsG": 2, "fatG": 0, "fiberG": 1 }
+    ],
+    "steps": [
+      "Boil diced root vegetables until tender.",
+      "Form small meatballs from pork and rice, drop into the soup.",
+      "Simmer 25 minutes, then add borsch for sourness.",
+      "Finish with chopped lovage and parsley."
+    ]
+  },
+  {
+    "id": "ro-mamaliga",
+    "name": "Mamaliga cu Branza si Smantana",
+    "category": "main",
+    "cuisine": "Romanian",
+    "servings": 4,
+    "description": "Creamy polenta layered with salty cheese and sour cream.",
+    "custom": false,
+    "tags": ["vegetarian", "gluten-free", "comfort"],
+    "healthFocus": ["thyroid-friendly", "low-histamine"],
+    "diets": ["vegetarian", "omnivore", "mediterranean"],
+    "ingredients": [
+      { "name": "Cornmeal", "amount": "250 g", "calories": 900, "proteinG": 20, "carbsG": 190, "fatG": 9, "fiberG": 18 },
+      { "name": "Telemea / feta cheese", "amount": "150 g", "calories": 390, "proteinG": 21, "carbsG": 3, "fatG": 33, "fiberG": 0 },
+      { "name": "Sour cream", "amount": "150 g", "calories": 290, "proteinG": 3, "carbsG": 5, "fatG": 30, "fiberG": 0 }
+    ],
+    "steps": [
+      "Bring salted water to a boil, rain in cornmeal while whisking.",
+      "Stir until thick, about 20 minutes.",
+      "Serve topped with crumbled cheese and a dollop of sour cream."
+    ]
+  },
+  {
+    "id": "ro-zacusca",
+    "name": "Zacusca (Roasted Veg Spread)",
+    "category": "vegetables",
+    "cuisine": "Romanian",
+    "servings": 8,
+    "description": "Roasted eggplant and pepper spread, vegan and freezer-friendly.",
+    "custom": false,
+    "tags": ["vegan", "vegetables", "spread"],
+    "healthFocus": ["anti-inflammatory", "diabetes-friendly"],
+    "diets": ["vegan", "vegetarian", "pescatarian", "omnivore", "paleo", "mediterranean"],
+    "ingredients": [
+      { "name": "Eggplant", "amount": "500 g", "calories": 125, "proteinG": 5, "carbsG": 30, "fatG": 1, "fiberG": 15 },
+      { "name": "Red bell peppers", "amount": "500 g", "calories": 155, "proteinG": 5, "carbsG": 30, "fatG": 2, "fiberG": 10 },
+      { "name": "Onion", "amount": "200 g", "calories": 80, "proteinG": 2, "carbsG": 19, "fatG": 0, "fiberG": 3 },
+      { "name": "Tomato paste", "amount": "100 g", "calories": 80, "proteinG": 4, "carbsG": 18, "fatG": 0, "fiberG": 4 },
+      { "name": "Sunflower oil", "amount": "50 ml", "calories": 440, "proteinG": 0, "carbsG": 0, "fatG": 50, "fiberG": 0 }
+    ],
+    "steps": [
+      "Roast eggplant and peppers, peel and chop.",
+      "Soften onion in oil, add veg and tomato paste.",
+      "Simmer on low until thick and jammy, 45-60 minutes.",
+      "Season and jar while hot."
+    ]
+  },
+  {
+    "id": "ro-fasole-batuta",
+    "name": "Fasole Batuta (Bean Dip)",
+    "category": "vegetables",
+    "cuisine": "Romanian",
+    "servings": 6,
+    "description": "Whipped white bean dip with caramelized onion topping. High fiber & vegan.",
+    "custom": false,
+    "tags": ["vegan", "high-fiber", "protein"],
+    "healthFocus": ["diabetes-friendly", "anti-inflammatory"],
+    "diets": ["vegan", "vegetarian", "pescatarian", "omnivore", "mediterranean"],
+    "ingredients": [
+      { "name": "White beans (cooked)", "amount": "400 g", "calories": 560, "proteinG": 38, "carbsG": 100, "fatG": 4, "fiberG": 30 },
+      { "name": "Onion", "amount": "2 medium", "calories": 90, "proteinG": 2, "carbsG": 21, "fatG": 0, "fiberG": 4 },
+      { "name": "Olive oil", "amount": "30 ml", "calories": 265, "proteinG": 0, "carbsG": 0, "fatG": 30, "fiberG": 0 }
+    ],
+    "steps": [
+      "Blend warm beans with a little oil until creamy.",
+      "Caramelize sliced onion in remaining oil.",
+      "Top the bean puree with the onion. Serve with bread or veggies."
+    ]
+  },
+  {
+    "id": "veg-salata-vinete",
+    "name": "Salata de Vinete (Eggplant Salad)",
+    "category": "salad",
+    "cuisine": "Romanian",
+    "servings": 4,
+    "description": "Smoky roasted eggplant salad with onion.",
+    "custom": false,
+    "tags": ["vegan", "vegetables", "low-carb"],
+    "healthFocus": ["diabetes-friendly", "thyroid-friendly"],
+    "diets": ["vegan", "vegetarian", "pescatarian", "omnivore", "keto", "paleo", "mediterranean"],
+    "ingredients": [
+      { "name": "Eggplant", "amount": "700 g", "calories": 175, "proteinG": 7, "carbsG": 42, "fatG": 1, "fiberG": 21 },
+      { "name": "Onion", "amount": "1 small", "calories": 30, "proteinG": 1, "carbsG": 7, "fatG": 0, "fiberG": 1 },
+      { "name": "Sunflower oil", "amount": "40 ml", "calories": 350, "proteinG": 0, "carbsG": 0, "fatG": 40, "fiberG": 0 }
+    ],
+    "steps": [
+      "Char eggplant over flame or bake until collapsed.",
+      "Peel, drain, then chop finely on a wooden board.",
+      "Beat in oil gradually with grated onion and salt."
+    ]
+  },
+  {
+    "id": "veg-rainbow-salad",
+    "name": "Rainbow Veggie Bowl",
+    "category": "salad",
+    "cuisine": "International",
+    "servings": 2,
+    "description": "Crunchy mixed vegetable bowl with chickpeas and lemon dressing.",
+    "custom": false,
+    "tags": ["vegan", "high-fiber", "meal-prep"],
+    "healthFocus": ["diabetes-friendly", "anti-inflammatory", "gut-friendly"],
+    "diets": ["vegan", "vegetarian", "pescatarian", "omnivore", "mediterranean"],
+    "ingredients": [
+      { "name": "Mixed greens", "amount": "100 g", "calories": 25, "proteinG": 2, "carbsG": 4, "fatG": 0, "fiberG": 2 },
+      { "name": "Chickpeas (cooked)", "amount": "150 g", "calories": 240, "proteinG": 13, "carbsG": 40, "fatG": 4, "fiberG": 11 },
+      { "name": "Cherry tomatoes", "amount": "100 g", "calories": 18, "proteinG": 1, "carbsG": 4, "fatG": 0, "fiberG": 1 },
+      { "name": "Cucumber", "amount": "100 g", "calories": 15, "proteinG": 1, "carbsG": 4, "fatG": 0, "fiberG": 1 },
+      { "name": "Carrot", "amount": "80 g", "calories": 33, "proteinG": 1, "carbsG": 8, "fatG": 0, "fiberG": 2 },
+      { "name": "Olive oil + lemon", "amount": "20 ml", "calories": 180, "proteinG": 0, "carbsG": 1, "fatG": 20, "fiberG": 0 }
+    ],
+    "steps": [
+      "Chop all vegetables into bite-sized pieces.",
+      "Add chickpeas and toss with olive oil, lemon and salt."
+    ]
+  },
+  {
+    "id": "fruit-salad",
+    "name": "Seasonal Fruit Salad",
+    "category": "fruit",
+    "cuisine": "International",
+    "servings": 2,
+    "description": "Fresh fruit medley with mint and a squeeze of lime.",
+    "custom": false,
+    "tags": ["vegan", "fruit", "low-fat"],
+    "healthFocus": ["thyroid-friendly"],
+    "diets": ["vegan", "vegetarian", "pescatarian", "omnivore", "paleo", "mediterranean"],
+    "ingredients": [
+      { "name": "Apple", "amount": "1 medium", "calories": 95, "proteinG": 0, "carbsG": 25, "fatG": 0, "fiberG": 4 },
+      { "name": "Banana", "amount": "1 medium", "calories": 105, "proteinG": 1, "carbsG": 27, "fatG": 0, "fiberG": 3 },
+      { "name": "Strawberries", "amount": "100 g", "calories": 32, "proteinG": 1, "carbsG": 8, "fatG": 0, "fiberG": 2 },
+      { "name": "Grapes", "amount": "100 g", "calories": 69, "proteinG": 1, "carbsG": 18, "fatG": 0, "fiberG": 1 }
+    ],
+    "steps": ["Dice fruit, combine in a bowl.", "Add torn mint and a squeeze of lime."]
+  },
+  {
+    "id": "fruit-berry-smoothie",
+    "name": "Berry Protein Smoothie",
+    "category": "fruit",
+    "cuisine": "International",
+    "servings": 1,
+    "description": "Quick post-workout berry smoothie with extra protein.",
+    "custom": false,
+    "tags": ["protein", "muscle-gain", "breakfast"],
+    "healthFocus": ["anti-inflammatory"],
+    "diets": ["vegetarian", "omnivore"],
+    "ingredients": [
+      { "name": "Mixed berries", "amount": "150 g", "calories": 80, "proteinG": 1, "carbsG": 18, "fatG": 0, "fiberG": 6 },
+      { "name": "Greek yogurt", "amount": "150 g", "calories": 90, "proteinG": 15, "carbsG": 6, "fatG": 0, "fiberG": 0 },
+      { "name": "Whey/plant protein", "amount": "1 scoop", "calories": 120, "proteinG": 24, "carbsG": 3, "fatG": 2, "fiberG": 1 },
+      { "name": "Oats", "amount": "30 g", "calories": 117, "proteinG": 4, "carbsG": 20, "fatG": 2, "fiberG": 3 }
+    ],
+    "steps": ["Add everything to a blender with water or milk.", "Blend until smooth."]
+  },
+  {
+    "id": "pastry-papanasi",
+    "name": "Papanasi (Fried Cheese Doughnuts)",
+    "category": "pastry",
+    "cuisine": "Romanian",
+    "servings": 4,
+    "description": "Soft cottage-cheese doughnuts topped with sour cream and jam.",
+    "custom": false,
+    "tags": ["dessert", "traditional", "treat"],
+    "healthFocus": [],
+    "diets": ["vegetarian", "omnivore"],
+    "ingredients": [
+      { "name": "Cottage cheese (urda)", "amount": "500 g", "calories": 490, "proteinG": 55, "carbsG": 18, "fatG": 22, "fiberG": 0 },
+      { "name": "Eggs", "amount": "2", "calories": 140, "proteinG": 12, "carbsG": 1, "fatG": 10, "fiberG": 0 },
+      { "name": "Flour", "amount": "150 g", "calories": 525, "proteinG": 15, "carbsG": 110, "fatG": 1, "fiberG": 4 },
+      { "name": "Sour cream", "amount": "150 g", "calories": 290, "proteinG": 3, "carbsG": 5, "fatG": 30, "fiberG": 0 },
+      { "name": "Sour cherry jam", "amount": "100 g", "calories": 250, "proteinG": 0, "carbsG": 64, "fatG": 0, "fiberG": 1 }
+    ],
+    "steps": [
+      "Mix cheese, eggs, flour and a pinch of baking soda into a soft dough.",
+      "Shape rings, fry in oil until golden.",
+      "Top with sour cream and jam."
+    ]
+  },
+  {
+    "id": "pastry-cozonac",
+    "name": "Cozonac (Sweet Bread)",
+    "category": "pastry",
+    "cuisine": "Romanian",
+    "servings": 10,
+    "description": "Festive enriched sweet bread swirled with walnut and cocoa filling.",
+    "custom": false,
+    "tags": ["dessert", "holiday", "treat"],
+    "healthFocus": [],
+    "diets": ["vegetarian", "omnivore"],
+    "ingredients": [
+      { "name": "Flour", "amount": "1 kg", "calories": 3640, "proteinG": 104, "carbsG": 760, "fatG": 10, "fiberG": 28 },
+      { "name": "Milk", "amount": "400 ml", "calories": 260, "proteinG": 14, "carbsG": 19, "fatG": 14, "fiberG": 0 },
+      { "name": "Eggs", "amount": "4", "calories": 280, "proteinG": 24, "carbsG": 2, "fatG": 20, "fiberG": 0 },
+      { "name": "Sugar", "amount": "250 g", "calories": 970, "proteinG": 0, "carbsG": 250, "fatG": 0, "fiberG": 0 },
+      { "name": "Walnuts", "amount": "300 g", "calories": 1960, "proteinG": 45, "carbsG": 41, "fatG": 196, "fiberG": 20 }
+    ],
+    "steps": [
+      "Activate yeast in warm milk, make an enriched dough; knead well.",
+      "Let rise until doubled.",
+      "Roll out, spread walnut-cocoa filling, braid and place in tins.",
+      "Prove again, brush with egg, bake at 170 C for ~50 minutes."
+    ]
+  },
+  {
+    "id": "pastry-placinta-mere",
+    "name": "Placinta cu Mere (Apple Pie Pockets)",
+    "category": "pastry",
+    "cuisine": "Romanian",
+    "servings": 6,
+    "description": "Flaky pastry filled with cinnamon-spiced apples.",
+    "custom": false,
+    "tags": ["dessert", "fruit", "treat"],
+    "healthFocus": [],
+    "diets": ["vegetarian", "omnivore"],
+    "ingredients": [
+      { "name": "Puff/filo pastry", "amount": "400 g", "calories": 1480, "proteinG": 24, "carbsG": 140, "fatG": 92, "fiberG": 5 },
+      { "name": "Apples", "amount": "500 g", "calories": 260, "proteinG": 1, "carbsG": 69, "fatG": 0, "fiberG": 12 },
+      { "name": "Sugar & cinnamon", "amount": "80 g", "calories": 310, "proteinG": 0, "carbsG": 80, "fatG": 0, "fiberG": 1 }
+    ],
+    "steps": [
+      "Grate apples, cook briefly with sugar and cinnamon to dry them.",
+      "Fill pastry squares, fold and seal.",
+      "Bake at 190 C until golden, ~25 minutes."
+    ]
+  },
+  {
+    "id": "breakfast-omelette",
+    "name": "Veggie Protein Omelette",
+    "category": "breakfast",
+    "cuisine": "International",
+    "servings": 1,
+    "description": "High-protein omelette loaded with vegetables.",
+    "custom": false,
+    "tags": ["protein", "low-carb", "muscle-gain"],
+    "healthFocus": ["diabetes-friendly", "low-histamine"],
+    "diets": ["vegetarian", "omnivore", "keto", "mediterranean"],
+    "ingredients": [
+      { "name": "Eggs", "amount": "3", "calories": 210, "proteinG": 18, "carbsG": 1, "fatG": 15, "fiberG": 0 },
+      { "name": "Spinach", "amount": "50 g", "calories": 12, "proteinG": 1, "carbsG": 2, "fatG": 0, "fiberG": 1 },
+      { "name": "Bell pepper", "amount": "50 g", "calories": 15, "proteinG": 1, "carbsG": 3, "fatG": 0, "fiberG": 1 },
+      { "name": "Feta", "amount": "30 g", "calories": 80, "proteinG": 4, "carbsG": 1, "fatG": 6, "fiberG": 0 }
+    ],
+    "steps": ["Saute vegetables, pour in beaten eggs.", "Add feta, fold and cook through."]
+  },
+  {
+    "id": "snack-overnight-oats",
+    "name": "High-Fiber Overnight Oats",
+    "category": "snack",
+    "cuisine": "International",
+    "servings": 1,
+    "description": "Make-ahead oats with chia and fruit for a fiber boost.",
+    "custom": false,
+    "tags": ["high-fiber", "breakfast", "meal-prep"],
+    "healthFocus": ["diabetes-friendly", "gut-friendly"],
+    "diets": ["vegan", "vegetarian", "pescatarian", "omnivore", "mediterranean"],
+    "ingredients": [
+      { "name": "Rolled oats", "amount": "50 g", "calories": 195, "proteinG": 7, "carbsG": 33, "fatG": 3, "fiberG": 5 },
+      { "name": "Chia seeds", "amount": "15 g", "calories": 73, "proteinG": 2, "carbsG": 6, "fatG": 5, "fiberG": 5 },
+      { "name": "Milk or plant milk", "amount": "200 ml", "calories": 100, "proteinG": 7, "carbsG": 10, "fatG": 4, "fiberG": 0 },
+      { "name": "Berries", "amount": "80 g", "calories": 43, "proteinG": 1, "carbsG": 10, "fatG": 0, "fiberG": 3 }
+    ],
+    "steps": ["Combine oats, chia and milk in a jar.", "Refrigerate overnight, top with berries."]
+  },
+  {
+    "id": "health-ginger-zucchini-soup",
+    "name": "Ginger Zucchini Debloat Soup",
+    "category": "soup",
+    "cuisine": "International",
+    "servings": 3,
+    "description": "Light blended zucchini soup with ginger and fennel to ease bloating.",
+    "custom": false,
+    "tags": ["light", "soothing", "low-fodmap"],
+    "healthFocus": ["anti-bloating", "gut-friendly", "low-fodmap"],
+    "diets": ["vegan", "vegetarian", "pescatarian", "omnivore", "paleo", "mediterranean"],
+    "ingredients": [
+      { "name": "Zucchini", "amount": "500 g", "calories": 85, "proteinG": 6, "carbsG": 16, "fatG": 1, "fiberG": 5 },
+      { "name": "Fresh ginger", "amount": "20 g", "calories": 16, "proteinG": 0, "carbsG": 4, "fatG": 0, "fiberG": 0 },
+      { "name": "Fennel bulb", "amount": "150 g", "calories": 47, "proteinG": 2, "carbsG": 11, "fatG": 0, "fiberG": 5 },
+      { "name": "Olive oil", "amount": "15 ml", "calories": 130, "proteinG": 0, "carbsG": 0, "fatG": 15, "fiberG": 0 }
+    ],
+    "steps": [
+      "Soften sliced fennel and grated ginger in olive oil.",
+      "Add chopped zucchini and water to cover; simmer 15 minutes.",
+      "Blend smooth, season lightly with salt."
+    ]
+  },
+  {
+    "id": "health-peppermint-papaya",
+    "name": "Peppermint Papaya Bowl",
+    "category": "fruit",
+    "cuisine": "International",
+    "servings": 1,
+    "description": "Papaya and pineapple with mint — natural enzymes that reduce bloating.",
+    "custom": false,
+    "tags": ["debloat", "enzymes", "fresh"],
+    "healthFocus": ["anti-bloating", "gut-friendly"],
+    "diets": ["vegan", "vegetarian", "pescatarian", "omnivore", "paleo", "mediterranean"],
+    "ingredients": [
+      { "name": "Papaya", "amount": "200 g", "calories": 86, "proteinG": 1, "carbsG": 22, "fatG": 0, "fiberG": 3 },
+      { "name": "Pineapple", "amount": "100 g", "calories": 50, "proteinG": 1, "carbsG": 13, "fatG": 0, "fiberG": 1 },
+      { "name": "Fresh mint", "amount": "5 g", "calories": 3, "proteinG": 0, "carbsG": 1, "fatG": 0, "fiberG": 0 }
+    ],
+    "steps": ["Dice papaya and pineapple.", "Toss with torn mint and chill."]
+  },
+  {
+    "id": "health-lentil-stew",
+    "name": "Low-GI Lentil & Spinach Stew",
+    "category": "main",
+    "cuisine": "International",
+    "servings": 4,
+    "description": "High-fiber lentils with spinach — slow-release carbs for stable blood sugar.",
+    "custom": false,
+    "tags": ["low-gi", "high-fiber", "vegan"],
+    "healthFocus": ["diabetes-friendly", "anti-inflammatory", "iron-rich"],
+    "diets": ["vegan", "vegetarian", "pescatarian", "omnivore", "mediterranean"],
+    "ingredients": [
+      { "name": "Brown/green lentils (dry)", "amount": "250 g", "calories": 870, "proteinG": 62, "carbsG": 150, "fatG": 3, "fiberG": 75 },
+      { "name": "Spinach", "amount": "200 g", "calories": 46, "proteinG": 6, "carbsG": 7, "fatG": 1, "fiberG": 4 },
+      { "name": "Onion & garlic", "amount": "120 g", "calories": 50, "proteinG": 2, "carbsG": 12, "fatG": 0, "fiberG": 2 },
+      { "name": "Olive oil", "amount": "20 ml", "calories": 175, "proteinG": 0, "carbsG": 0, "fatG": 20, "fiberG": 0 },
+      { "name": "Cumin & paprika", "amount": "10 g", "calories": 25, "proteinG": 1, "carbsG": 4, "fatG": 1, "fiberG": 2 }
+    ],
+    "steps": [
+      "Sweat onion and garlic in olive oil with the spices.",
+      "Add rinsed lentils and water; simmer until tender (~30 min).",
+      "Stir through spinach until wilted; season."
+    ]
+  },
+  {
+    "id": "health-chia-pudding",
+    "name": "Cinnamon Chia Pudding",
+    "category": "breakfast",
+    "cuisine": "International",
+    "servings": 2,
+    "description": "No-sugar chia pudding with cinnamon — supports steady glucose.",
+    "custom": false,
+    "tags": ["low-sugar", "low-gi", "meal-prep"],
+    "healthFocus": ["diabetes-friendly", "gut-friendly"],
+    "diets": ["vegan", "vegetarian", "pescatarian", "omnivore", "paleo", "mediterranean"],
+    "ingredients": [
+      { "name": "Chia seeds", "amount": "40 g", "calories": 195, "proteinG": 6, "carbsG": 17, "fatG": 12, "fiberG": 14 },
+      { "name": "Unsweetened almond milk", "amount": "300 ml", "calories": 45, "proteinG": 2, "carbsG": 3, "fatG": 3, "fiberG": 1 },
+      { "name": "Cinnamon", "amount": "3 g", "calories": 8, "proteinG": 0, "carbsG": 3, "fatG": 0, "fiberG": 2 },
+      { "name": "Walnuts", "amount": "20 g", "calories": 131, "proteinG": 3, "carbsG": 3, "fatG": 13, "fiberG": 1 }
+    ],
+    "steps": [
+      "Whisk chia, milk and cinnamon; rest 5 minutes and whisk again.",
+      "Refrigerate overnight, top with walnuts."
+    ]
+  },
+  {
+    "id": "health-salmon-brazil",
+    "name": "Baked Salmon with Greens",
+    "category": "main",
+    "cuisine": "International",
+    "servings": 2,
+    "description": "Selenium and iodine-rich salmon with steamed greens for thyroid support.",
+    "custom": false,
+    "tags": ["selenium", "iodine", "omega-3"],
+    "healthFocus": ["thyroid-friendly", "anti-inflammatory", "low-histamine"],
+    "diets": ["pescatarian", "omnivore", "keto", "paleo", "mediterranean"],
+    "ingredients": [
+      { "name": "Fresh salmon fillet", "amount": "300 g", "calories": 480, "proteinG": 60, "carbsG": 0, "fatG": 27, "fiberG": 0 },
+      { "name": "Broccoli (cooked)", "amount": "200 g", "calories": 70, "proteinG": 6, "carbsG": 14, "fatG": 1, "fiberG": 6 },
+      { "name": "Olive oil", "amount": "15 ml", "calories": 130, "proteinG": 0, "carbsG": 0, "fatG": 15, "fiberG": 0 },
+      { "name": "Brazil nuts", "amount": "10 g", "calories": 66, "proteinG": 1, "carbsG": 1, "fatG": 7, "fiberG": 1 }
+    ],
+    "steps": [
+      "Bake fresh salmon at 200 C for 12-15 minutes.",
+      "Steam broccoli; drizzle with olive oil.",
+      "Serve with a couple of crushed Brazil nuts for selenium."
+    ]
+  },
+  {
+    "id": "health-low-histamine-chicken",
+    "name": "Fresh Chicken & Rice Bowl",
+    "category": "main",
+    "cuisine": "International",
+    "servings": 2,
+    "description": "Freshly cooked chicken with rice and zucchini — low-histamine friendly.",
+    "custom": false,
+    "tags": ["low-histamine", "gentle", "fresh"],
+    "healthFocus": ["low-histamine", "gut-friendly"],
+    "diets": ["omnivore"],
+    "ingredients": [
+      { "name": "Fresh chicken breast", "amount": "300 g", "calories": 330, "proteinG": 62, "carbsG": 0, "fatG": 7, "fiberG": 0 },
+      { "name": "White rice (cooked)", "amount": "300 g", "calories": 390, "proteinG": 7, "carbsG": 86, "fatG": 1, "fiberG": 1 },
+      { "name": "Zucchini", "amount": "200 g", "calories": 34, "proteinG": 2, "carbsG": 7, "fatG": 0, "fiberG": 2 },
+      { "name": "Olive oil", "amount": "15 ml", "calories": 130, "proteinG": 0, "carbsG": 0, "fatG": 15, "fiberG": 0 }
+    ],
+    "steps": [
+      "Cook fresh chicken promptly (avoid leftovers for low-histamine).",
+      "Saute zucchini in olive oil.",
+      "Serve over freshly cooked rice."
+    ]
+  },
+  {
+    "id": "health-low-histamine-apple",
+    "name": "Baked Apple with Oats",
+    "category": "dessert",
+    "cuisine": "International",
+    "servings": 2,
+    "description": "Warm baked apples with oats — a safe low-histamine sweet treat.",
+    "custom": false,
+    "tags": ["low-histamine", "low-sugar", "cozy"],
+    "healthFocus": ["low-histamine", "gut-friendly"],
+    "diets": ["vegan", "vegetarian", "pescatarian", "omnivore", "mediterranean"],
+    "ingredients": [
+      { "name": "Apples", "amount": "2 medium", "calories": 190, "proteinG": 1, "carbsG": 50, "fatG": 0, "fiberG": 8 },
+      { "name": "Rolled oats", "amount": "40 g", "calories": 156, "proteinG": 5, "carbsG": 27, "fatG": 3, "fiberG": 4 },
+      { "name": "Cinnamon", "amount": "2 g", "calories": 5, "proteinG": 0, "carbsG": 2, "fatG": 0, "fiberG": 1 }
+    ],
+    "steps": [
+      "Core apples, fill with oats and cinnamon.",
+      "Bake at 180 C for 25 minutes until soft."
+    ]
+  },
+  {
+    "id": "med-greek-salad",
+    "name": "Classic Greek Salad (Horiatiki)",
+    "category": "salad",
+    "cuisine": "Mediterranean",
+    "servings": 2,
+    "description": "Juicy tomatoes, cucumber, olives and feta with oregano and olive oil.",
+    "custom": false,
+    "tags": ["fresh", "low-carb", "summer"],
+    "healthFocus": ["anti-inflammatory", "diabetes-friendly", "thyroid-friendly"],
+    "diets": ["vegetarian", "pescatarian", "omnivore", "keto", "mediterranean"],
+    "ingredients": [
+      { "name": "Tomatoes", "amount": "300 g", "calories": 54, "proteinG": 3, "carbsG": 12, "fatG": 1, "fiberG": 4 },
+      { "name": "Cucumber", "amount": "200 g", "calories": 30, "proteinG": 1, "carbsG": 7, "fatG": 0, "fiberG": 1 },
+      { "name": "Red onion", "amount": "60 g", "calories": 24, "proteinG": 1, "carbsG": 6, "fatG": 0, "fiberG": 1 },
+      { "name": "Kalamata olives", "amount": "60 g", "calories": 90, "proteinG": 1, "carbsG": 3, "fatG": 9, "fiberG": 2 },
+      { "name": "Feta cheese", "amount": "120 g", "calories": 312, "proteinG": 17, "carbsG": 2, "fatG": 26, "fiberG": 0 },
+      { "name": "Olive oil & oregano", "amount": "30 ml", "calories": 265, "proteinG": 0, "carbsG": 0, "fatG": 30, "fiberG": 0 }
+    ],
+    "steps": [
+      "Cut tomatoes and cucumber into chunks, slice red onion thinly.",
+      "Combine in a bowl with olives.",
+      "Top with a block of feta, drizzle olive oil and sprinkle oregano."
+    ]
+  },
+  {
+    "id": "med-hummus",
+    "name": "Creamy Chickpea Hummus",
+    "category": "vegetables",
+    "cuisine": "Mediterranean",
+    "servings": 6,
+    "description": "Smooth chickpea and tahini dip with lemon and garlic.",
+    "custom": false,
+    "tags": ["vegan", "high-fiber", "dip"],
+    "healthFocus": ["diabetes-friendly", "gut-friendly", "anti-inflammatory"],
+    "diets": ["vegan", "vegetarian", "pescatarian", "omnivore", "mediterranean"],
+    "ingredients": [
+      { "name": "Chickpeas (cooked)", "amount": "400 g", "calories": 640, "proteinG": 34, "carbsG": 108, "fatG": 11, "fiberG": 30 },
+      { "name": "Tahini", "amount": "60 g", "calories": 357, "proteinG": 10, "carbsG": 13, "fatG": 32, "fiberG": 5 },
+      { "name": "Olive oil", "amount": "30 ml", "calories": 265, "proteinG": 0, "carbsG": 0, "fatG": 30, "fiberG": 0 },
+      { "name": "Lemon juice & garlic", "amount": "1 lemon + 2 cloves", "calories": 25, "proteinG": 1, "carbsG": 6, "fatG": 0, "fiberG": 1 }
+    ],
+    "steps": [
+      "Blend chickpeas with tahini, lemon juice and garlic.",
+      "Stream in olive oil and a little water until silky.",
+      "Season with salt and cumin; finish with a drizzle of oil."
+    ]
+  },
+  {
+    "id": "ita-minestrone",
+    "name": "Minestrone Soup",
+    "category": "soup",
+    "cuisine": "Italian",
+    "servings": 4,
+    "description": "Hearty Italian vegetable and bean soup with a tomato base.",
+    "custom": false,
+    "tags": ["vegan", "high-fiber", "comfort"],
+    "healthFocus": ["diabetes-friendly", "gut-friendly", "anti-inflammatory"],
+    "diets": ["vegan", "vegetarian", "pescatarian", "omnivore", "mediterranean"],
+    "ingredients": [
+      { "name": "Cannellini beans (cooked)", "amount": "300 g", "calories": 420, "proteinG": 28, "carbsG": 75, "fatG": 3, "fiberG": 22 },
+      { "name": "Mixed vegetables (carrot, celery, zucchini)", "amount": "400 g", "calories": 140, "proteinG": 5, "carbsG": 30, "fatG": 1, "fiberG": 10 },
+      { "name": "Chopped tomatoes", "amount": "400 g", "calories": 80, "proteinG": 4, "carbsG": 16, "fatG": 1, "fiberG": 4 },
+      { "name": "Small pasta", "amount": "80 g", "calories": 280, "proteinG": 10, "carbsG": 56, "fatG": 1, "fiberG": 3 },
+      { "name": "Olive oil", "amount": "20 ml", "calories": 175, "proteinG": 0, "carbsG": 0, "fatG": 20, "fiberG": 0 }
+    ],
+    "steps": [
+      "Soften diced vegetables in olive oil.",
+      "Add tomatoes, beans and water or stock; simmer 20 minutes.",
+      "Stir in pasta and cook until tender.",
+      "Season and serve with basil."
+    ]
+  },
+  {
+    "id": "ita-caprese",
+    "name": "Caprese Salad",
+    "category": "salad",
+    "cuisine": "Italian",
+    "servings": 2,
+    "description": "Tomato, fresh mozzarella and basil with olive oil — simple and elegant.",
+    "custom": false,
+    "tags": ["fresh", "low-carb", "vegetarian"],
+    "healthFocus": ["anti-inflammatory", "low-histamine"],
+    "diets": ["vegetarian", "pescatarian", "omnivore", "keto", "mediterranean"],
+    "ingredients": [
+      { "name": "Tomatoes", "amount": "300 g", "calories": 54, "proteinG": 3, "carbsG": 12, "fatG": 1, "fiberG": 4 },
+      { "name": "Fresh mozzarella", "amount": "150 g", "calories": 420, "proteinG": 33, "carbsG": 3, "fatG": 30, "fiberG": 0 },
+      { "name": "Fresh basil", "amount": "10 g", "calories": 2, "proteinG": 0, "carbsG": 0, "fatG": 0, "fiberG": 0 },
+      { "name": "Olive oil", "amount": "20 ml", "calories": 175, "proteinG": 0, "carbsG": 0, "fatG": 20, "fiberG": 0 }
+    ],
+    "steps": [
+      "Slice tomatoes and mozzarella.",
+      "Layer alternately with basil leaves.",
+      "Drizzle olive oil, season with salt and pepper."
+    ]
+  },
+  {
+    "id": "ind-chana-masala",
+    "name": "Chana Masala",
+    "category": "main",
+    "cuisine": "Indian",
+    "servings": 4,
+    "description": "Spiced chickpea curry in a tomato-onion gravy.",
+    "custom": false,
+    "tags": ["vegan", "high-fiber", "spicy"],
+    "healthFocus": ["diabetes-friendly", "anti-inflammatory", "iron-rich"],
+    "diets": ["vegan", "vegetarian", "pescatarian", "omnivore", "mediterranean"],
+    "ingredients": [
+      { "name": "Chickpeas (cooked)", "amount": "500 g", "calories": 800, "proteinG": 42, "carbsG": 135, "fatG": 13, "fiberG": 37 },
+      { "name": "Onion", "amount": "150 g", "calories": 60, "proteinG": 2, "carbsG": 14, "fatG": 0, "fiberG": 3 },
+      { "name": "Tomatoes", "amount": "300 g", "calories": 54, "proteinG": 3, "carbsG": 12, "fatG": 1, "fiberG": 4 },
+      { "name": "Garlic, ginger & spices", "amount": "30 g", "calories": 45, "proteinG": 2, "carbsG": 9, "fatG": 1, "fiberG": 3 },
+      { "name": "Vegetable oil", "amount": "20 ml", "calories": 175, "proteinG": 0, "carbsG": 0, "fatG": 20, "fiberG": 0 }
+    ],
+    "steps": [
+      "Fry onion, garlic and ginger until golden.",
+      "Add ground spices (cumin, coriander, garam masala, turmeric) and tomatoes; cook to a thick masala.",
+      "Stir in chickpeas with a little water; simmer 15 minutes.",
+      "Finish with lemon and fresh coriander."
+    ]
+  },
+  {
+    "id": "ind-dal-tadka",
+    "name": "Dal Tadka",
+    "category": "main",
+    "cuisine": "Indian",
+    "servings": 4,
+    "description": "Comforting yellow lentils tempered with cumin, garlic and spices.",
+    "custom": false,
+    "tags": ["vegan", "high-protein", "comfort"],
+    "healthFocus": ["diabetes-friendly", "iron-rich", "gut-friendly"],
+    "diets": ["vegan", "vegetarian", "pescatarian", "omnivore", "mediterranean"],
+    "ingredients": [
+      { "name": "Yellow lentils (toor/moong, dry)", "amount": "250 g", "calories": 870, "proteinG": 60, "carbsG": 150, "fatG": 4, "fiberG": 40 },
+      { "name": "Onion & tomato", "amount": "200 g", "calories": 70, "proteinG": 3, "carbsG": 16, "fatG": 0, "fiberG": 4 },
+      { "name": "Garlic, cumin & turmeric", "amount": "20 g", "calories": 30, "proteinG": 1, "carbsG": 6, "fatG": 1, "fiberG": 2 },
+      { "name": "Ghee or oil", "amount": "20 ml", "calories": 180, "proteinG": 0, "carbsG": 0, "fatG": 20, "fiberG": 0 }
+    ],
+    "steps": [
+      "Boil lentils with turmeric until soft and creamy.",
+      "Make a tadka: fry cumin, garlic and chilli in ghee until fragrant.",
+      "Add onion and tomato, cook down, then stir into the dal.",
+      "Simmer briefly and garnish with coriander."
+    ]
+  },
+  {
+    "id": "usa-burger-bowl",
+    "name": "Grilled Chicken Burger Bowl",
+    "category": "main",
+    "cuisine": "American",
+    "servings": 2,
+    "description": "Deconstructed burger bowl with grilled chicken, greens and avocado.",
+    "custom": false,
+    "tags": ["protein", "muscle-gain", "low-carb"],
+    "healthFocus": ["diabetes-friendly", "anti-inflammatory"],
+    "diets": ["omnivore", "keto", "paleo"],
+    "ingredients": [
+      { "name": "Chicken breast", "amount": "300 g", "calories": 330, "proteinG": 62, "carbsG": 0, "fatG": 7, "fiberG": 0 },
+      { "name": "Mixed greens", "amount": "100 g", "calories": 25, "proteinG": 2, "carbsG": 4, "fatG": 0, "fiberG": 2 },
+      { "name": "Avocado", "amount": "100 g", "calories": 160, "proteinG": 2, "carbsG": 9, "fatG": 15, "fiberG": 7 },
+      { "name": "Tomato & red onion", "amount": "120 g", "calories": 35, "proteinG": 1, "carbsG": 8, "fatG": 0, "fiberG": 2 },
+      { "name": "Olive oil dressing", "amount": "20 ml", "calories": 175, "proteinG": 0, "carbsG": 0, "fatG": 20, "fiberG": 0 }
+    ],
+    "steps": [
+      "Season and grill chicken, then slice.",
+      "Build a bowl of greens, tomato, onion and avocado.",
+      "Top with chicken and drizzle olive oil dressing."
+    ]
+  },
+  {
+    "id": "usa-pancakes",
+    "name": "Fluffy Buttermilk Pancakes",
+    "category": "breakfast",
+    "cuisine": "American",
+    "servings": 4,
+    "description": "Classic stack of fluffy pancakes — a weekend brunch favorite.",
+    "custom": false,
+    "tags": ["breakfast", "treat", "vegetarian"],
+    "healthFocus": [],
+    "diets": ["vegetarian", "omnivore"],
+    "ingredients": [
+      { "name": "Flour", "amount": "250 g", "calories": 910, "proteinG": 26, "carbsG": 190, "fatG": 3, "fiberG": 7 },
+      { "name": "Buttermilk", "amount": "300 ml", "calories": 120, "proteinG": 9, "carbsG": 15, "fatG": 3, "fiberG": 0 },
+      { "name": "Eggs", "amount": "2", "calories": 140, "proteinG": 12, "carbsG": 1, "fatG": 10, "fiberG": 0 },
+      { "name": "Butter & sugar", "amount": "60 g", "calories": 430, "proteinG": 1, "carbsG": 30, "fatG": 33, "fiberG": 0 }
+    ],
+    "steps": [
+      "Whisk dry ingredients, then mix in buttermilk, eggs and melted butter.",
+      "Rest the batter 10 minutes.",
+      "Cook ladlefuls on a buttered griddle until bubbles form, flip and finish.",
+      "Serve with maple syrup and fruit."
+    ]
+  },
+  {
+    "id": "mex-black-bean-tacos",
+    "name": "Black Bean Tacos",
+    "category": "main",
+    "cuisine": "Mexican",
+    "servings": 3,
+    "description": "Spiced black beans in corn tortillas with fresh toppings.",
+    "custom": false,
+    "tags": ["vegan", "high-fiber", "quick"],
+    "healthFocus": ["diabetes-friendly", "gut-friendly", "anti-inflammatory"],
+    "diets": ["vegan", "vegetarian", "pescatarian", "omnivore"],
+    "ingredients": [
+      { "name": "Black beans (cooked)", "amount": "400 g", "calories": 528, "proteinG": 34, "carbsG": 96, "fatG": 2, "fiberG": 32 },
+      { "name": "Corn tortillas", "amount": "6", "calories": 360, "proteinG": 9, "carbsG": 75, "fatG": 4, "fiberG": 9 },
+      { "name": "Tomato, onion & coriander", "amount": "150 g", "calories": 45, "proteinG": 2, "carbsG": 10, "fatG": 0, "fiberG": 3 },
+      { "name": "Avocado", "amount": "100 g", "calories": 160, "proteinG": 2, "carbsG": 9, "fatG": 15, "fiberG": 7 },
+      { "name": "Lime & spices", "amount": "1 lime", "calories": 20, "proteinG": 0, "carbsG": 7, "fatG": 0, "fiberG": 2 }
+    ],
+    "steps": [
+      "Warm beans with cumin, paprika and a splash of water; mash lightly.",
+      "Heat tortillas on a dry pan.",
+      "Fill with beans, fresh salsa, avocado and a squeeze of lime."
+    ]
+  },
+  {
+    "id": "mex-guacamole",
+    "name": "Fresh Guacamole",
+    "category": "vegetables",
+    "cuisine": "Mexican",
+    "servings": 4,
+    "description": "Creamy avocado dip with lime, onion, tomato and coriander.",
+    "custom": false,
+    "tags": ["vegan", "healthy-fats", "dip"],
+    "healthFocus": ["anti-inflammatory", "diabetes-friendly", "gut-friendly"],
+    "diets": ["vegan", "vegetarian", "pescatarian", "omnivore", "keto", "paleo"],
+    "ingredients": [
+      { "name": "Avocados", "amount": "3 ripe", "calories": 720, "proteinG": 9, "carbsG": 38, "fatG": 66, "fiberG": 30 },
+      { "name": "Tomato & onion", "amount": "120 g", "calories": 35, "proteinG": 1, "carbsG": 8, "fatG": 0, "fiberG": 2 },
+      { "name": "Lime juice", "amount": "1 lime", "calories": 20, "proteinG": 0, "carbsG": 7, "fatG": 0, "fiberG": 2 },
+      { "name": "Coriander & chilli", "amount": "10 g", "calories": 5, "proteinG": 0, "carbsG": 1, "fatG": 0, "fiberG": 0 }
+    ],
+    "steps": [
+      "Mash avocados to your preferred texture.",
+      "Fold in diced tomato, onion, chilli and coriander.",
+      "Season with lime juice and salt."
+    ]
+  },
+  {
+    "id": "afr-jollof-rice",
+    "name": "Jollof Rice",
+    "category": "main",
+    "cuisine": "African",
+    "servings": 4,
+    "description": "West African one-pot rice simmered in a smoky tomato-pepper sauce.",
+    "custom": false,
+    "tags": ["one-pot", "spicy", "vegan"],
+    "healthFocus": ["anti-inflammatory"],
+    "diets": ["vegan", "vegetarian", "pescatarian", "omnivore"],
+    "ingredients": [
+      { "name": "Long-grain rice", "amount": "300 g", "calories": 1080, "proteinG": 21, "carbsG": 237, "fatG": 2, "fiberG": 3 },
+      { "name": "Tomatoes & red pepper", "amount": "400 g", "calories": 110, "proteinG": 4, "carbsG": 24, "fatG": 1, "fiberG": 6 },
+      { "name": "Onion & garlic", "amount": "150 g", "calories": 60, "proteinG": 2, "carbsG": 14, "fatG": 0, "fiberG": 3 },
+      { "name": "Vegetable oil", "amount": "30 ml", "calories": 265, "proteinG": 0, "carbsG": 0, "fatG": 30, "fiberG": 0 },
+      { "name": "Spices (curry, thyme, bay)", "amount": "10 g", "calories": 20, "proteinG": 1, "carbsG": 4, "fatG": 0, "fiberG": 1 }
+    ],
+    "steps": [
+      "Blend tomatoes, pepper, onion and garlic into a smooth sauce.",
+      "Fry the blend in oil until thick and reduced.",
+      "Stir in spices and washed rice, add stock to just cover.",
+      "Cover and steam on low until rice is tender and slightly smoky."
+    ]
+  },
+  {
+    "id": "afr-moroccan-tagine",
+    "name": "Moroccan Chickpea Tagine",
+    "category": "main",
+    "cuisine": "African",
+    "servings": 4,
+    "description": "Fragrant North African stew of chickpeas, vegetables and warm spices.",
+    "custom": false,
+    "tags": ["vegan", "high-fiber", "stew"],
+    "healthFocus": ["diabetes-friendly", "anti-inflammatory", "gut-friendly"],
+    "diets": ["vegan", "vegetarian", "pescatarian", "omnivore", "mediterranean"],
+    "ingredients": [
+      { "name": "Chickpeas (cooked)", "amount": "400 g", "calories": 640, "proteinG": 34, "carbsG": 108, "fatG": 11, "fiberG": 30 },
+      { "name": "Sweet potato & carrot", "amount": "300 g", "calories": 270, "proteinG": 5, "carbsG": 63, "fatG": 0, "fiberG": 9 },
+      { "name": "Tomatoes & onion", "amount": "250 g", "calories": 70, "proteinG": 3, "carbsG": 16, "fatG": 0, "fiberG": 4 },
+      { "name": "Olive oil", "amount": "20 ml", "calories": 175, "proteinG": 0, "carbsG": 0, "fatG": 20, "fiberG": 0 },
+      { "name": "Cumin, cinnamon & paprika", "amount": "10 g", "calories": 25, "proteinG": 1, "carbsG": 4, "fatG": 1, "fiberG": 2 }
+    ],
+    "steps": [
+      "Soften onion in olive oil with the warm spices.",
+      "Add diced sweet potato, carrot and tomatoes.",
+      "Stir in chickpeas and water; simmer until vegetables are tender.",
+      "Finish with coriander and serve over couscous."
+    ]
+  },
+  {
+    "id": "afr-ethiopian-misir-wot",
+    "name": "Misir Wot (Ethiopian Red Lentils)",
+    "category": "main",
+    "cuisine": "African",
+    "servings": 4,
+    "description": "Spiced Ethiopian red lentil stew with berbere — naturally vegan.",
+    "custom": false,
+    "tags": ["vegan", "high-protein", "spicy"],
+    "healthFocus": ["diabetes-friendly", "iron-rich", "anti-inflammatory"],
+    "diets": ["vegan", "vegetarian", "pescatarian", "omnivore"],
+    "ingredients": [
+      { "name": "Red lentils (dry)", "amount": "250 g", "calories": 880, "proteinG": 62, "carbsG": 150, "fatG": 4, "fiberG": 38 },
+      { "name": "Onion", "amount": "200 g", "calories": 80, "proteinG": 2, "carbsG": 19, "fatG": 0, "fiberG": 3 },
+      { "name": "Garlic, ginger & berbere", "amount": "30 g", "calories": 50, "proteinG": 2, "carbsG": 10, "fatG": 1, "fiberG": 3 },
+      { "name": "Oil", "amount": "20 ml", "calories": 175, "proteinG": 0, "carbsG": 0, "fatG": 20, "fiberG": 0 }
+    ],
+    "steps": [
+      "Cook chopped onion dry, then add oil, garlic, ginger and berbere.",
+      "Add rinsed red lentils and water.",
+      "Simmer, stirring, until lentils break down into a thick stew.",
+      "Season and serve with injera or rice."
+    ]
+  }
+]

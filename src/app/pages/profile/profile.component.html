@@ -1,0 +1,131 @@
+<div class="page">
+  <header class="page-head">
+    <h1>Your Profile</h1>
+    <p class="sub">Tell us about you so we can build your plan.</p>
+  </header>
+
+  <form (ngSubmit)="save()" class="card form">
+    <div class="field">
+      <label>Name</label>
+      <input type="text" [(ngModel)]="model.name" name="name" placeholder="Your name" />
+    </div>
+
+    <div class="row">
+      <div class="field">
+        <label>Gender</label>
+        <div class="chips">
+          @for (g of genders; track g.value) {
+            <button type="button" class="chip" [class.active]="model.gender === g.value"
+              (click)="model.gender = g.value">{{ g.label }}</button>
+          }
+        </div>
+      </div>
+      <div class="field">
+        <label>Age</label>
+        <input type="number" min="10" max="100" [(ngModel)]="model.age" name="age" />
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="field">
+        <label>Weight (kg)</label>
+        <input type="number" min="30" max="250" [(ngModel)]="model.weightKg" name="weight" />
+      </div>
+      <div class="field">
+        <label>Height (cm)</label>
+        <input type="number" min="120" max="220" [(ngModel)]="model.heightCm" name="height" />
+      </div>
+    </div>
+
+    <div class="bmi-box">
+      <div class="bmi-head">
+        <span class="bmi-title">Your BMI</span>
+        <span class="bmi-value" [style.color]="bmiColor">{{ bmi }}
+          <span class="bmi-cat" [style.background]="bmiColor">{{ bmiCategory }}</span>
+        </span>
+      </div>
+      <div class="bmi-scale">
+        <div class="bmi-track"></div>
+        <div class="bmi-marker" [style.left.%]="bmiMarkerPct" [style.border-color]="bmiColor"></div>
+      </div>
+      <div class="bmi-legend">
+        <span>15</span><span>Under</span><span>Normal</span><span>Over</span><span>Obese</span><span>40</span>
+      </div>
+    </div>
+
+    <div class="field">
+      <label>Body Shape</label>
+      <div class="chips">
+        @for (b of bodyShapes; track b.value) {
+          <button type="button" class="chip" [class.active]="model.bodyShape === b.value"
+            (click)="model.bodyShape = b.value">{{ b.emoji }} {{ b.label }}</button>
+        }
+      </div>
+    </div>
+
+    <div class="field">
+      <label>Food Preference</label>
+      <div class="chips">
+        @for (f of foodPreferences; track f.value) {
+          <button type="button" class="chip" [class.active]="model.foodPreference === f.value"
+            (click)="model.foodPreference = f.value">{{ f.emoji }} {{ f.label }}</button>
+        }
+      </div>
+    </div>
+
+    <div class="field">
+      <label>Goal</label>
+      <div class="cards-grid">
+        @for (goal of goals; track goal.value) {
+          <button type="button" class="goal-card" [class.active]="model.goal === goal.value"
+            (click)="model.goal = goal.value">
+            <strong>{{ goal.label }}</strong>
+            <span>{{ goal.desc }}</span>
+          </button>
+        }
+      </div>
+    </div>
+
+    @if (model.goal === 'deficit') {
+      <div class="field">
+        <label>Daily Calorie Deficit Target</label>
+        <div class="cards-grid">
+          @for (d of deficitOptions; track d.value) {
+            <button type="button" class="goal-card" [class.active]="model.deficitCalories === d.value"
+              (click)="model.deficitCalories = d.value">
+              <strong>{{ d.label }}</strong>
+              <span>{{ d.desc }}</span>
+            </button>
+          }
+        </div>
+        <div class="field custom-deficit">
+          <label>Or set a custom amount (kcal)</label>
+          <input type="number" min="100" max="1200" step="50"
+            [(ngModel)]="model.deficitCalories" name="deficit" />
+        </div>
+      </div>
+    }
+
+    <div class="field">
+      <label>Daily Activity Level</label>
+      <div class="cards-grid">
+        @for (a of activityLevels; track a.value) {
+          <button type="button" class="goal-card" [class.active]="model.activityLevel === a.value"
+            (click)="model.activityLevel = a.value">
+            <strong>{{ a.label }}</strong>
+            <span>{{ a.desc }}</span>
+          </button>
+        }
+      </div>
+    </div>
+
+    <div class="field">
+      <label>Daily Step Goal 👣</label>
+      <input type="number" min="1000" max="40000" step="500"
+        [(ngModel)]="model.stepGoal" name="stepGoal" />
+    </div>
+
+    <button type="submit" class="btn-primary">Save & See My Plan</button>
+    @if (saved()) { <p class="ok">Saved! Redirecting…</p> }
+  </form>
+</div>
